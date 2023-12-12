@@ -4,10 +4,16 @@
  */
 package salesmanagement;
 
+import com.opencsv.CSVWriter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -180,42 +186,90 @@ private int counter=99;
 
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
-     
-        if (txtCustName.getText().equals("")|| txtPhoneNum.getText().equals("")||txtPostcode.getText().equals("")){
+//     String filePath = "src//cust.csv";
+//        File file = new File(filePath);
+//        if (txtCustName.getText().equals("")|| txtPhoneNum.getText().equals("")||txtPostcode.getText().equals("")){
+//            JOptionPane.showMessageDialog(this, "Please Enter All Data!");
+//        }else {
+//            String id = "C" + String.format("%04d", counter++);
+//          
+//            String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(),txtPostcode.getText()};
+//            DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
+//            tblModel.addRow(data);
+//            
+//            
+//           
+//      
+//            try {
+//                FileWriter w = new FileWriter(filePath,true);
+//                CSVWriter csv = new CSVWriter(w, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+//                csv.writeNext(data);
+//                csv.close();
+//                w.close();
+//        
+//            } catch (IOException ex) {
+//                Logger.getLogger(salesDataEntering.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//            JOptionPane.showMessageDialog(this, "Add Data Successfully!");
+//
+//            txtCustName.setText("");
+//            txtPhoneNum.setText("");
+//            txtPostcode.setText("");
+//
+//        }
+        String filePath = "src//cust.csv";
+        if (txtCustName.getText().equals("")|| txtPhoneNum.getText().equals("")||txtPostcode.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
-        }else {
-            String id = "C" + String.format("%04d", counter++);
+        } else {
+            
+            
+           String id = "C" + String.format("%04d", counter++);
           
             String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(),txtPostcode.getText()};
             DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
             tblModel.addRow(data);
-            JOptionPane.showMessageDialog(this, "Add Data Successfully!");
+           
             
-            txtCustName.setText("");
+            try {
+                FileWriter e = new FileWriter(filePath,true);
+                CSVWriter csv = new CSVWriter(e, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+                csv.writeNext(data);
+                csv.close();
+                e.close();
+        
+            } catch (IOException ex) {
+                Logger.getLogger(salesDataEntering.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(this, "Add Data Successfully!");
+
+             txtCustName.setText("");
             txtPhoneNum.setText("");
             txtPostcode.setText("");
+
         }
     }//GEN-LAST:event_btnAddDataActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       String filePath = "src//cust.csv";
-       File file = new File(filePath);
-       
-       try {
-       BufferedReader br = new BufferedReader(new FileReader (file));
-       String firstLine = br.readLine().trim();
-       String [] columnsName = firstLine.split(",");
-       DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-       
-       model.setColumnIdentifiers(columnsName);
-      Object[]tableLines = br.lines().toArray();
-      
-        for(int i = 0 ; i<tableLines.length; i++){
-            String line = tableLines[i].toString().trim();
-            String[]dataRow = line.split(",");
-            model.addRow(dataRow);
-        }
-       } catch (IOException ex) {
+      String filePath = "src//cust.csv";
+        File file = new File(filePath);
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String firstLine = br.readLine().trim();
+
+            String[] columnsName = firstLine.split(",");
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+            dm.getDataVector().removeAllElements();
+            model.setColumnIdentifiers(columnsName);
+            Object[] tableLines = br.lines().toArray();
+
+            for (int i = 0; i < tableLines.length; i++) {
+                String line = tableLines[i].toString().trim();
+                String[] dataRow = line.split(",");
+                model.addRow(dataRow);
+            }
+        } catch (IOException ex) {
             Logger.getLogger(customerDataEntering.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -5,6 +5,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTable; 
 import java.io.FileReader;
 import java.io.File;
+import java.util.ArrayList;
 
 public class importCustomer {
     public void importCust() {
@@ -12,7 +13,6 @@ public class importCustomer {
         c.ReadCSV(new File("src\\cust.csv"));
     }
     public void enteringNewCustomer (){
-       
     }
 }
 

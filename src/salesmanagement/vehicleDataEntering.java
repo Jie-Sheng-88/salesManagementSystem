@@ -4,6 +4,7 @@
  */
 package salesmanagement;
 
+import com.opencsv.CSVWriter;
 import javax.swing.JOptionPane;
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +16,7 @@ import java.time.format.DateTimeFormatter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import static salesmanagement.ReadFile.data;
 
 /**
  *
@@ -46,6 +49,8 @@ public class vehicleDataEntering extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         txtCarPlate = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -60,6 +65,19 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,7 +161,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,21 +172,22 @@ public class vehicleDataEntering extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCarPlate, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtAcqPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtSoldPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(24, 24, 24)
                                 .addComponent(btnAddData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton2))
-                            .addComponent(txtCarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtCarStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAcqPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 55, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,7 +200,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCarModel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAcqPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -197,7 +216,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
                     .addComponent(jButton2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -225,7 +244,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
 
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
-
+        String filePath = "src//vehicle.csv";
         if (txtCarPlate.getText().equals("") || txtCarModel.getText().equals("") || txtAcqPrice.getText().equals("") || txtCarStatus.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
         } else {
@@ -233,6 +252,15 @@ public class vehicleDataEntering extends javax.swing.JFrame {
             String data[] = {txtCarPlate.getText(), txtCarModel.getText(), txtAcqPrice.getText(), txtCarStatus.getText(), txtSoldPrice.getText()};
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
+            try {
+                FileWriter v = new FileWriter(filePath, true);
+                CSVWriter csv = new CSVWriter(v, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+                csv.writeNext(data);
+                csv.close();
+                v.close();
+            } catch (IOException ex) {
+                Logger.getLogger(vehicleDataEntering.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Add Data Successfully!");
 
             txtCarPlate.setText("");
@@ -251,25 +279,59 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String firstLine = br.readLine().trim();
+
             String[] columnsName = firstLine.split(",");
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
+            dm.getDataVector().removeAllElements();
             model.setColumnIdentifiers(columnsName);
             Object[] tableLines = br.lines().toArray();
 
             for (int i = 0; i < tableLines.length; i++) {
                 String line = tableLines[i].toString().trim();
-                String[] dataRow = line.split(",");
+
+                String[] dataRow = new String[5];
+
+                String[] splitLine = line.split(",");
+                for (int j = 0; j < Math.min(splitLine.length, 5); j++) {
+                    dataRow[j] = splitLine[j];
+                }
+                System.out.println(dataRow.length);
+                for (int j = 0; j < dataRow.length; j++) {
+                    // Check if the column is empty
+                    System.out.println(dataRow.length);
+                    if (dataRow[j] == null || dataRow[j].isBlank() || dataRow[j].isEmpty()) {
+                        // Add "empty" to empty cells
+                        dataRow[j] = "empty";
+
+                    }
+                }
+
                 model.addRow(dataRow);
             }
+
+// Assuming you have a CSVWriter instance, you can use it like this:
+            
+               FileWriter v = new FileWriter(file);
+               CSVWriter csv = new CSVWriter(v, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+            v.write("");
+            csv.writeNext(new String[]{"carPlate", "carModel", "acquirePrice", "carStatus", "salesPrice"}); // error here
+     for (int i = 0; i < model.getRowCount(); i++) {
+         for (int j = 0; j < model.getColumnCount(); j++) {
+             v.write(model.getValueAt(i, j).toString() + ",");
+         }
+         v.write("\n");
+     }
+     v.close();
         } catch (IOException ex) {
             Logger.getLogger(customerDataEntering.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
-     * @param args the command line arguments
-     */
+         * @param args the command line arguments
+         */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -311,7 +373,9 @@ public class vehicleDataEntering extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtAcqPrice;
     private javax.swing.JTextField txtCarModel;
     private javax.swing.JTextField txtCarPlate;

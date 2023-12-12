@@ -4,6 +4,7 @@
  */
 package salesmanagement;
 
+import com.opencsv.CSVWriter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,10 +15,13 @@ import java.time.format.DateTimeFormatter;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -165,23 +169,35 @@ public class salesDataEntering extends javax.swing.JFrame {
     private void txtCustIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCustIDActionPerformed
-
+    
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
-
+        String filePath = "src//sales.csv";
         if (txtCarPlate.getText().equals("") || txtCustID.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
         } else {
+            
             String id = "A" + String.format("%04d", counter++);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
             DateTimeFormatter dt = DateTimeFormatter.ofPattern("HH:mm:ss");
             LocalDateTime localDateTime = LocalDateTime.now();
             ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
             String together = dtf.format(localDateTime) + "T" + dt.format(localDateTime) + "Z";
-
-            String data[] = {id, together, txtCarPlate.getText(), txtCustID.getText()};
+            
+            String data[] = {id, together, txtCarPlate.getText(), txtCustID.getText(), "0"};
+           
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
+            try {
+                FileWriter w = new FileWriter(filePath,true);
+                CSVWriter csv = new CSVWriter(w, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+                csv.writeNext(data);
+                csv.close();
+                w.close();
+        
+            } catch (IOException ex) {
+                Logger.getLogger(salesDataEntering.class.getName()).log(Level.SEVERE, null, ex);
+            }
             JOptionPane.showMessageDialog(this, "Add Data Successfully!");
 
             txtCarPlate.setText("");
@@ -197,9 +213,11 @@ public class salesDataEntering extends javax.swing.JFrame {
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String firstLine = br.readLine().trim();
+
             String[] columnsName = firstLine.split(",");
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
+            DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+            dm.getDataVector().removeAllElements();
             model.setColumnIdentifiers(columnsName);
             Object[] tableLines = br.lines().toArray();
 
