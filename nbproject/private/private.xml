@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/customerDataEntering.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/SalesManagement.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/MainFrame.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/importVehicle.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/ReadFile.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/importSales.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/importEmployee.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/importCustomer.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/vehicleDataEntering.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/salesDataEntering.java</file>
-            <file>file:/C:/Users/User/Documents/NetBeansProjects/salesManagement/src/salesmanagement/ReadCSV.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

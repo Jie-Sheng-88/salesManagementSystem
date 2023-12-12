@@ -16,14 +16,20 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author User
  */
 public class customerDataEntering extends javax.swing.JFrame {
-private int counter=99;
+
+    private int counter = 99;
+
     /**
      * Creates new form customerDataEntering
      */
@@ -49,52 +55,91 @@ private int counter=99;
         txtPhoneNum = new javax.swing.JTextField();
         txtPostcode = new javax.swing.JTextField();
         btnAddData = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        csvSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 159, 31, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("Customer Name:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 160, 40));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Postcode:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 90, 40));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Phone Number:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 150, 40));
 
-        txtCustName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtCustName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCustNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtCustName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 170, 30));
 
-        txtPhoneNum.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtPhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneNumActionPerformed(evt);
             }
         });
+        getContentPane().add(txtPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 170, 30));
 
-        txtPostcode.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtPostcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPostcodeActionPerformed(evt);
             }
         });
+        getContentPane().add(txtPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 170, 30));
 
-        btnAddData.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
+        btnAddData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddData.setText("Add Data");
         btnAddData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddDataActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAddData, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, -1, -1));
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setText("Import Data from CSV");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Search:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, 27));
+
+        csvSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csvSearchActionPerformed(evt);
+            }
+        });
+        csvSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                csvSearchKeyPressed(evt);
+            }
+        });
+        getContentPane().add(csvSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 180, 30));
+
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -105,71 +150,34 @@ private int counter=99;
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton2.setText("Import Data from CSV");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 400));
+
+        jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 40)); // NOI18N
+        jLabel6.setText("Customer Information");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        jLabel8.setFont(new java.awt.Font("Freestyle Script", 0, 50)); // NOI18N
+        jLabel8.setText(" LeCars");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, -1));
+
+        jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        jLabel10.setText("JavaRides");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 20));
+
+        jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 10)); // NOI18N
+        jLabel11.setText("  -- SINCE 2004 --");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 120, 10));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\vs code\\salesAssignment\\src\\salesmanagement\\newpackage\\1.png")); // NOI18N
+        jLabel7.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentRemoved(java.awt.event.ContainerEvent evt) {
+                jLabel7ComponentRemoved(evt);
             }
         });
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnAddData)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPhoneNum, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                                    .addComponent(txtCustName)
-                                    .addComponent(txtPostcode))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtCustName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPhoneNum, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPostcode, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddData)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(139, Short.MAX_VALUE))
-        );
-
-        pack();
+        setSize(new java.awt.Dimension(914, 607));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCustNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCustNameActionPerformed
@@ -218,31 +226,29 @@ private int counter=99;
 //
 //        }
         String filePath = "src//cust.csv";
-        if (txtCustName.getText().equals("")|| txtPhoneNum.getText().equals("")||txtPostcode.getText().equals("")) {
+        if (txtCustName.getText().equals("") || txtPhoneNum.getText().equals("") || txtPostcode.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
         } else {
-            
-            
-           String id = "C" + String.format("%04d", counter++);
-          
-            String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(),txtPostcode.getText()};
-            DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
+
+            String id = "C" + String.format("%04d", counter++);
+
+            String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(), txtPostcode.getText()};
+            DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
-           
-            
+
             try {
-                FileWriter e = new FileWriter(filePath,true);
+                FileWriter e = new FileWriter(filePath, true);
                 CSVWriter csv = new CSVWriter(e, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
                 csv.writeNext(data);
                 csv.close();
                 e.close();
-        
+
             } catch (IOException ex) {
                 Logger.getLogger(salesDataEntering.class.getName()).log(Level.SEVERE, null, ex);
             }
             JOptionPane.showMessageDialog(this, "Add Data Successfully!");
 
-             txtCustName.setText("");
+            txtCustName.setText("");
             txtPhoneNum.setText("");
             txtPostcode.setText("");
 
@@ -250,7 +256,7 @@ private int counter=99;
     }//GEN-LAST:event_btnAddDataActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      String filePath = "src//cust.csv";
+        String filePath = "src//cust.csv";
         File file = new File(filePath);
 
         try {
@@ -259,7 +265,7 @@ private int counter=99;
 
             String[] columnsName = firstLine.split(",");
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+            DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
             dm.getDataVector().removeAllElements();
             model.setColumnIdentifiers(columnsName);
             Object[] tableLines = br.lines().toArray();
@@ -273,6 +279,28 @@ private int counter=99;
             Logger.getLogger(customerDataEntering.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void csvSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csvSearchKeyPressed
+        // TODO add your handling code here:
+        String searchTerm = csvSearch.getText();
+        DefaultTableModel table = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> sort = new TableRowSorter<>(table);
+        jTable1.setRowSorter(sort);
+
+        if (searchTerm.length() == 0) {
+            sort.setRowFilter(null);
+        } else {
+            sort.setRowFilter(RowFilter.regexFilter("(?i)" + Pattern.quote(searchTerm)));
+        }
+    }//GEN-LAST:event_csvSearchKeyPressed
+
+    private void csvSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_csvSearchActionPerformed
+
+    private void jLabel7ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jLabel7ComponentRemoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7ComponentRemoved
 
     /**
      * @param args the command line arguments
@@ -311,11 +339,18 @@ private int counter=99;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddData;
+    private javax.swing.JTextField csvSearch;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
