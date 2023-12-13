@@ -24,17 +24,17 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import static salesmanagement.ReadFile.data;
-/**
- *
- * @author User
- */
+
 public class employeeDataEntering extends javax.swing.JFrame {
 
     /**
-     * Creates new form employeeDataEntering
+     * Creates new form employeeDataEntering1
      */
     public employeeDataEntering() {
         initComponents();
@@ -49,75 +49,72 @@ public class employeeDataEntering extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         txtEmpID = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         txtEmpName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         txtEmpStatus = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        employeeId = new javax.swing.JLabel();
+        employeeName = new javax.swing.JLabel();
+        employeeStatus = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
         txtPassword = new javax.swing.JTextField();
-        btnAddData = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnAddData = new javax.swing.JButton();
+        btnImportDataFromCSV = new javax.swing.JButton();
+        txtSearch = new javax.swing.JTextField();
+        search = new javax.swing.JLabel();
+        employeeInformation = new javax.swing.JLabel();
+        leCars = new javax.swing.JLabel();
+        javaRides = new javax.swing.JLabel();
+        since2004 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("Employee ID:");
-
-        txtEmpID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtEmpID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpIDActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmpID, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 140, 170, 30));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setText("Employee Name:");
-
-        txtEmpName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtEmpName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmpName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 170, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setText("Employee Status:");
-
-        txtEmpStatus.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txtEmpStatus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEmpStatusActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEmpStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 170, 30));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setText("Password:");
+        employeeId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        employeeId.setText("Employee ID:");
+        getContentPane().add(employeeId, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 150, -1, -1));
 
-        txtPassword.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        employeeName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        employeeName.setText("Employee Name:");
+        getContentPane().add(employeeName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, -1, -1));
+
+        employeeStatus.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        employeeStatus.setText("Employee Status:");
+        getContentPane().add(employeeStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, -1, -1));
+
+        password.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        password.setText("Password:");
+        getContentPane().add(password, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, -1, -1));
+
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPasswordActionPerformed(evt);
             }
         });
-
-        btnAddData.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
-        btnAddData.setText("Add Data");
-        btnAddData.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddDataActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Import Data from CSV");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 170, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,84 +126,67 @@ public class employeeDataEntering extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 555, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmpStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpName, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEmpStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddData)
-                    .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 400));
+
+        btnAddData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAddData.setText("Add Data");
+        btnAddData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnAddData, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 380, -1, -1));
+
+        btnImportDataFromCSV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnImportDataFromCSV.setText("Import Data from CSV");
+        btnImportDataFromCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportDataFromCSVActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnImportDataFromCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 380, -1, -1));
+
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 180, 30));
+
+        search.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        search.setText("Search:");
+        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 70, 27));
+
+        employeeInformation.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 40)); // NOI18N
+        employeeInformation.setText("Employee Information");
+        getContentPane().add(employeeInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
+        leCars.setFont(new java.awt.Font("Freestyle Script", 0, 50)); // NOI18N
+        leCars.setText(" LeCars");
+        getContentPane().add(leCars, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, 110, -1));
+
+        javaRides.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        javaRides.setText("JavaRides");
+        getContentPane().add(javaRides, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 20));
+
+        since2004.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 10)); // NOI18N
+        since2004.setText("--SINCE 2004--");
+        getContentPane().add(since2004, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 40, 80, 10));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/2.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmpIDActionPerformed
-
     private void txtEmpNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmpNameActionPerformed
-
-    private void txtEmpStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmpStatusActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
@@ -238,7 +218,8 @@ public class employeeDataEntering extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddDataActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnImportDataFromCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportDataFromCSVActionPerformed
+        // TODO add your handling code here:
         String filePath = "src//employee.csv";
         File file = new File(filePath);
 
@@ -248,7 +229,7 @@ public class employeeDataEntering extends javax.swing.JFrame {
 
             String[] columnsName = firstLine.split(",");
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+            DefaultTableModel dm = (DefaultTableModel) jTable1.getModel();
             dm.getDataVector().removeAllElements();
             model.setColumnIdentifiers(columnsName);
             Object[] tableLines = br.lines().toArray();
@@ -261,7 +242,36 @@ public class employeeDataEntering extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(customerDataEntering.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnImportDataFromCSVActionPerformed
+    private void txtEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpIDActionPerformed
+
+    private void txtEmpStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpStatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpStatusActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        // TODO add your handling code here:
+        String searchTerm = txtSearch.getText();
+        DefaultTableModel table = (DefaultTableModel) jTable1.getModel();
+        TableRowSorter<DefaultTableModel> sort = new TableRowSorter<>(table);
+        jTable1.setRowSorter(sort);
+
+        if (searchTerm.length() == 0) {
+            sort.setRowFilter(null); // If the text is empty, show all rows
+        } else {
+            sort.setRowFilter(RowFilter.regexFilter("(?i)" + Pattern.quote(searchTerm)));
+        }
+    }//GEN-LAST:event_txtSearchKeyPressed
 
     /**
      * @param args the command line arguments
@@ -300,16 +310,23 @@ public class employeeDataEntering extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddData;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btnImportDataFromCSV;
+    private javax.swing.JLabel employeeId;
+    private javax.swing.JLabel employeeInformation;
+    private javax.swing.JLabel employeeName;
+    private javax.swing.JLabel employeeStatus;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel javaRides;
+    private javax.swing.JLabel leCars;
+    private javax.swing.JLabel password;
+    private javax.swing.JLabel search;
+    private javax.swing.JLabel since2004;
     private javax.swing.JTextField txtEmpID;
     private javax.swing.JTextField txtEmpName;
     private javax.swing.JTextField txtEmpStatus;
     private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
