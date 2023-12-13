@@ -48,23 +48,23 @@ public class customerDataEntering extends javax.swing.JFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        customerName = new javax.swing.JLabel();
+        postcode = new javax.swing.JLabel();
+        phoneNumber = new javax.swing.JLabel();
         txtCustName = new javax.swing.JTextField();
         txtPhoneNum = new javax.swing.JTextField();
         txtPostcode = new javax.swing.JTextField();
         btnAddData = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        csvSearch = new javax.swing.JTextField();
+        btnInportDataFromCSV = new javax.swing.JButton();
+        search = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        CustomerInformation = new javax.swing.JLabel();
+        LeCars = new javax.swing.JLabel();
+        JavaRides = new javax.swing.JLabel();
+        since2004 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         jTextField1.setText("jTextField1");
 
@@ -72,38 +72,38 @@ public class customerDataEntering extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 159, 31, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Customer Name:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 160, 40));
+        customerName.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        customerName.setText("Customer Name:");
+        getContentPane().add(customerName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 160, 40));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Postcode:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 90, 40));
+        postcode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        postcode.setText("Postcode:");
+        getContentPane().add(postcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 90, 40));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("Phone Number:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 150, 40));
+        phoneNumber.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        phoneNumber.setText("Phone Number:");
+        getContentPane().add(phoneNumber, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 200, 150, 40));
 
         txtCustName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCustNameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtCustName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 170, 30));
+        getContentPane().add(txtCustName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 155, 170, 30));
 
         txtPhoneNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPhoneNumActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, 170, 30));
+        getContentPane().add(txtPhoneNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 205, 170, 30));
 
         txtPostcode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPostcodeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 170, 30));
+        getContentPane().add(txtPostcode, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 255, 170, 30));
 
         btnAddData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddData.setText("Add Data");
@@ -114,30 +114,30 @@ public class customerDataEntering extends javax.swing.JFrame {
         });
         getContentPane().add(btnAddData, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Import Data from CSV");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnInportDataFromCSV.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnInportDataFromCSV.setText("Import Data from CSV");
+        btnInportDataFromCSV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnInportDataFromCSVActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, -1, -1));
+        getContentPane().add(btnInportDataFromCSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Search:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, 27));
+        search.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        search.setText("Search:");
+        getContentPane().add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 70, 27));
 
-        csvSearch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                csvSearchActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
-        csvSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                csvSearchKeyPressed(evt);
+                txtSearchKeyPressed(evt);
             }
         });
-        getContentPane().add(csvSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 180, 30));
+        getContentPane().add(txtSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 180, 30));
 
         jTable1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,31 +152,31 @@ public class customerDataEntering extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 400));
 
-        jLabel6.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 40)); // NOI18N
-        jLabel6.setText("Customer Information");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        CustomerInformation.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 40)); // NOI18N
+        CustomerInformation.setText("Customer Information");
+        getContentPane().add(CustomerInformation, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Freestyle Script", 0, 50)); // NOI18N
-        jLabel8.setText(" LeCars");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, -1));
+        LeCars.setFont(new java.awt.Font("Freestyle Script", 0, 50)); // NOI18N
+        LeCars.setText(" LeCars");
+        getContentPane().add(LeCars, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 470, 110, -1));
 
-        jLabel10.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
-        jLabel10.setText("JavaRides");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 20));
+        JavaRides.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 18)); // NOI18N
+        JavaRides.setText("JavaRides");
+        getContentPane().add(JavaRides, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 20));
 
-        jLabel11.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 10)); // NOI18N
-        jLabel11.setText("  -- SINCE 2004 --");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 40, 120, 10));
+        since2004.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 10)); // NOI18N
+        since2004.setText("-- SINCE 2004 --");
+        getContentPane().add(since2004, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 40, 80, 10));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\vs code\\salesAssignment\\src\\salesmanagement\\newpackage\\1.png")); // NOI18N
-        jLabel7.addContainerListener(new java.awt.event.ContainerAdapter() {
+        background.setIcon(new javax.swing.ImageIcon("C:\\fopass\\salesAssignment\\src\\salesmanagement\\newpackage\\1.png")); // NOI18N
+        background.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentRemoved(java.awt.event.ContainerEvent evt) {
-                jLabel7ComponentRemoved(evt);
+                backgroundComponentRemoved(evt);
             }
         });
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
 
-        setSize(new java.awt.Dimension(914, 607));
+        setSize(new java.awt.Dimension(913, 607));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -255,7 +255,7 @@ public class customerDataEntering extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddDataActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnInportDataFromCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInportDataFromCSVActionPerformed
         String filePath = "src//cust.csv";
         File file = new File(filePath);
 
@@ -278,11 +278,11 @@ public class customerDataEntering extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(customerDataEntering.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnInportDataFromCSVActionPerformed
 
-    private void csvSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_csvSearchKeyPressed
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         // TODO add your handling code here:
-        String searchTerm = csvSearch.getText();
+        String searchTerm = txtSearch.getText();
         DefaultTableModel table = (DefaultTableModel) jTable1.getModel();
         TableRowSorter<DefaultTableModel> sort = new TableRowSorter<>(table);
         jTable1.setRowSorter(sort);
@@ -292,15 +292,15 @@ public class customerDataEntering extends javax.swing.JFrame {
         } else {
             sort.setRowFilter(RowFilter.regexFilter("(?i)" + Pattern.quote(searchTerm)));
         }
-    }//GEN-LAST:event_csvSearchKeyPressed
+    }//GEN-LAST:event_txtSearchKeyPressed
 
-    private void csvSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csvSearchActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_csvSearchActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
-    private void jLabel7ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jLabel7ComponentRemoved
+    private void backgroundComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_backgroundComponentRemoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7ComponentRemoved
+    }//GEN-LAST:event_backgroundComponentRemoved
 
     /**
      * @param args the command line arguments
@@ -338,24 +338,24 @@ public class customerDataEntering extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel CustomerInformation;
+    private javax.swing.JLabel JavaRides;
+    private javax.swing.JLabel LeCars;
+    private javax.swing.JLabel background;
     private javax.swing.JButton btnAddData;
-    private javax.swing.JTextField csvSearch;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnInportDataFromCSV;
+    private javax.swing.JLabel customerName;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel phoneNumber;
+    private javax.swing.JLabel postcode;
+    private javax.swing.JLabel search;
+    private javax.swing.JLabel since2004;
     private javax.swing.JTextField txtCustName;
     private javax.swing.JTextField txtPhoneNum;
     private javax.swing.JTextField txtPostcode;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
