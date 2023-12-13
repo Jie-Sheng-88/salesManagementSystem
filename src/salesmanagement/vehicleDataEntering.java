@@ -237,11 +237,10 @@ public class vehicleDataEntering extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 350, 270));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0,80));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255,80));
 
         vehicleInformation.setBackground(new java.awt.Color(255, 255, 255));
         vehicleInformation.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 40)); // NOI18N
-        vehicleInformation.setForeground(new java.awt.Color(255, 255, 255));
         vehicleInformation.setText("Vehicle Information");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -295,7 +294,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         });
         getContentPane().add(btnAddData, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, -1, -1));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\fopass\\salesAssignment\\src\\salesmanagement\\newpackage\\5.jpg")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/5.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -110, 950, 790));
 
         setSize(new java.awt.Dimension(914, 607));

@@ -168,7 +168,7 @@ public class customerDataEntering extends javax.swing.JFrame {
         since2004.setText("-- SINCE 2004 --");
         getContentPane().add(since2004, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 40, 80, 10));
 
-        background.setIcon(new javax.swing.ImageIcon("C:\\fopass\\salesAssignment\\src\\salesmanagement\\newpackage\\1.png")); // NOI18N
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/1.png"))); // NOI18N
         background.addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentRemoved(java.awt.event.ContainerEvent evt) {
                 backgroundComponentRemoved(evt);

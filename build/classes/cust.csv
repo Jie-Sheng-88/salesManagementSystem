@@ -1,4 +1,4 @@
-ID,Name,Phone No.,Postcode
+custId,custName,phoneNum,postcode
 C0001,Ahmad bin Abdullah,101234567,53000
 C0002,Nurul binti Zainal,112345678,55050
 C0003,Lee Wei Ming,123456789,56000
