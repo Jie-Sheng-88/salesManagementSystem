@@ -3,19 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/vscode/salesAssignment/src/salesmanagement/employeeDataEntering.java</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/1.png</file>
-            <file>file:/C:/vscode/salesAssignment/src/salesmanagement/salesDataEntering.java</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/7.jpg</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/5.jpg</file>
-            <file>file:/C:/vscode/salesAssignment/src/salesmanagement/vehicleDataEntering.java</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/8.jpg</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/3.png</file>
-            <file>file:/C:/vscode/salesAssignment/src/salesmanagement/customerDataEntering.java</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/2.png</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/9.jpg</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/6.jpg</file>
-            <file>file:/C:/vscode/salesAssignment/src/pic/4.png</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/importVehicle.java</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/salesDataEntering.java</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/salarycalculationandbonuscalculation/ManagementLevelEmployeeOnlyLogin.java</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/loginAndRegisteration.java</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/SalesManagement.java</file>
+            <file>file:/C:/Users/qkeph/OneDrive/Desktop/latest/salesAssignment/src/salesmanagement/importCustomer.java</file>
         </group>
     </open-files>
 </project-private>
