@@ -14,12 +14,14 @@ public class searchEmployee {
 
     public static void main(String[] args) {
         String filepath = "src\\employee.csv";//change your file path
-        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog(null,
+        "Enter the search term:"
                 + "\n-Employee Id"
                 + "\n-Employee Name"
                 + "\n-Status (1 for under management)"
                 + "\n-Password"
-                + "\n(Any one above)");
+                + "\n(Any one above)",
+        "Search", JOptionPane.INFORMATION_MESSAGE);
 
         readRecords(searchTerm, filepath);
     }

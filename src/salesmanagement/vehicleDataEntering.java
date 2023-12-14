@@ -65,6 +65,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         btnImportDataFromCSV = new javax.swing.JButton();
         btnAddData = new javax.swing.JButton();
+        btnSearchData = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -294,6 +295,14 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         });
         getContentPane().add(btnAddData, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, -1, -1));
 
+        btnSearchData.setText("Search Data");
+        btnSearchData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSearchData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/5.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -110, 950, 790));
 
@@ -428,6 +437,11 @@ public class vehicleDataEntering extends javax.swing.JFrame {
 
     }//GEN-LAST:event_txtSearchKeyPressed
 
+    private void btnSearchDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDataActionPerformed
+        // TODO add your handling code here:
+        searchVehicle.main(new String[]{});
+    }//GEN-LAST:event_btnSearchDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -468,6 +482,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton btnAddData;
     private javax.swing.JButton btnImportDataFromCSV;
+    private javax.swing.JButton btnSearchData;
     private javax.swing.JLabel carModel;
     private javax.swing.JLabel carPlate;
     private javax.swing.JLabel carStatus;

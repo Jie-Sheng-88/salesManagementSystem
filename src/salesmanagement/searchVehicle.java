@@ -14,13 +14,15 @@ public class searchVehicle {
     public static void main(String[] args) {
         String filepath = "src\\vehicle.csv";//change your file path
 
-        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog(null,
+        "Enter the search term:"
                 + "\n-Car Plate"
                 + "\n-Car Model"
                 + "\n-Acquire Price"
                 + "\n-Car Status (1 for in stock)"
                 + "\n(Any one above )"
-                + "\n(If you need to search for a range of sales prices, press OK.)");
+                + "\n(If you need to search for a range of sales prices, press OK.)",
+        "Search", JOptionPane.INFORMATION_MESSAGE);
 
         if ("".equalsIgnoreCase(searchTerm)) {
             String min = JOptionPane.showInputDialog("Enter the minimum sales price: ");

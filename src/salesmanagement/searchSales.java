@@ -15,13 +15,15 @@ public class searchSales {
     public static void main(String[] args) {
         String filepath = "src\\sales.csv";//change your file path
 
-        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog(null,
+        "Enter the search term:"
                 + "\n-Sales Id"
                 + "\n-Date & Time"
                 + "\n-Car Plate"
                 + "\n-Customer Id"
                 + "\n-Employee Id"
-                + "\n(Any one above)");
+                + "\n(Any one above)",
+        "Search", JOptionPane.INFORMATION_MESSAGE);
 
         readRecords(searchTerm, filepath);
     }
