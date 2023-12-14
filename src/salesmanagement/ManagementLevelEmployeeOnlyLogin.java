@@ -1,4 +1,4 @@
-package salesmanagement.salarycalculationandbonuscalculation;
+package salesmanagement;
 
 
 import javax.swing.*;
