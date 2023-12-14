@@ -13,7 +13,7 @@ public class searchSales {
     public static Scanner x;
     
     public static void main(String[] args) {
-        String filepath = "C:\\NetBeans Projects\\search&filter\\src\\sales.csv";//change your file path
+        String filepath = "src\\sales.csv";//change your file path
 
         String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Sales Id"
