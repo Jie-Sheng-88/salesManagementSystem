@@ -73,7 +73,7 @@ public class salesDataEntering extends javax.swing.JFrame {
         carPlate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         carPlate.setForeground(new java.awt.Color(255, 255, 255));
         carPlate.setText("Car Plate:");
-        getContentPane().add(carPlate, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, 160, 40));
+        getContentPane().add(carPlate, new org.netbeans.lib.awtextra.AbsoluteConstraints(597, 180, 160, 40));
 
         txtCarPlate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,7 +85,7 @@ public class salesDataEntering extends javax.swing.JFrame {
         CustomerID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         CustomerID.setForeground(new java.awt.Color(255, 255, 255));
         CustomerID.setText("Customer ID:");
-        getContentPane().add(CustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 230, 150, 40));
+        getContentPane().add(CustomerID, new org.netbeans.lib.awtextra.AbsoluteConstraints(565, 230, 150, 40));
 
         txtCustID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
