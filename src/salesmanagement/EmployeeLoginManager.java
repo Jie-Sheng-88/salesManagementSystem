@@ -1,4 +1,4 @@
-package salesmanagement.salarycalculationandbonuscalculation;
+package salesmanagement;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
