@@ -1,9 +1,11 @@
 package salesmanagement;
 
-
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class searchCust {
 
@@ -14,14 +16,12 @@ public class searchCust {
 
         String filepath = "src\\cust.csv";//change your file path
 
-        String searchTerm = JOptionPane.showInputDialog(null,
-        "Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Customer Id"
                 + "\n-Customer Name"
                 + "\n-Phone Number"
                 + "\n-Postcode"
-                + "\n(Any one above)",
-        "Search", JOptionPane.INFORMATION_MESSAGE);
+                + "\n(Any one above)");
 
         readRecord(searchTerm, filepath);
 
@@ -29,32 +29,41 @@ public class searchCust {
 
     public static void readRecord(String searchTerm, String filepath) {
         boolean found = false;
-        String custId = "";
-        String custName = "";
-        String phoneNum = "";
-        String postcode = "";
 
         try {
             x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
 
-            while (x.hasNext() && !found) {
-                custId = x.next();
-                custName = x.next();
-                phoneNum = x.next();
-                postcode = x.next();
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Customer ID");
+            tableModel.addColumn("Customer Name");
+            tableModel.addColumn("Phone No.");
+            tableModel.addColumn("Postcode");
+            
+            while (x.hasNextLine()) {
+                String line = x.nextLine();
+                String[] data = line.split(",");
+                
+            if (data.length >= 4) {
+                String custId = data[0].trim();
+                String custName = data[1].trim();
+                String phoneNum = data[2].trim();
+                String postcode = data[3].trim();
 
                 if (custId.equalsIgnoreCase(searchTerm)
                         || custName.equalsIgnoreCase(searchTerm)
                         || phoneNum.equalsIgnoreCase(searchTerm)
                         || postcode.equalsIgnoreCase(searchTerm)) {
 
+                    tableModel.addRow(new Object[]{custId, custName, phoneNum, postcode});
                     found = true;
 
                 }
             }
+            }
             if (found) {
-                JOptionPane.showMessageDialog(null, "Customer Id: " + custId + "\nCustomer Name: " + custName + "\nPhone Number: " + phoneNum + "\nPostcode: " + postcode);
+                JTable resultTable = new JTable(tableModel);
+                JScrollPane scrollPane = new JScrollPane(resultTable);
+                JOptionPane.showMessageDialog(null, scrollPane, "Search Results", JOptionPane.INFORMATION_MESSAGE);
 
             } else {
                 JOptionPane.showMessageDialog(null, "Record not found");

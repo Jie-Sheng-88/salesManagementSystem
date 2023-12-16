@@ -1,6 +1,5 @@
 package salesmanagement;
 
-
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -14,14 +13,12 @@ public class searchEmployee {
 
     public static void main(String[] args) {
         String filepath = "src\\employee.csv";//change your file path
-        String searchTerm = JOptionPane.showInputDialog(null,
-        "Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Employee Id"
                 + "\n-Employee Name"
                 + "\n-Status (1 for under management)"
                 + "\n-Password"
-                + "\n(Any one above)",
-        "Search", JOptionPane.INFORMATION_MESSAGE);
+                + "\n(Any one above)");
 
         readRecords(searchTerm, filepath);
     }
@@ -29,33 +26,35 @@ public class searchEmployee {
     public static void readRecords(String searchTerm, String filepath) {
         boolean found = false;
 
-        DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.addColumn("Employee ID");
-        tableModel.addColumn("Employee Name");
-        tableModel.addColumn("Status");
-        tableModel.addColumn("Password");
-
         try {
             x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
-                String employeeId = x.next();
-                String employeeName = x.next();
-                String employeeStatus = x.next();
-                String password = x.next();
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Employee ID");
+            tableModel.addColumn("Employee Name");
+            tableModel.addColumn("Status");
+            tableModel.addColumn("Password");
 
-                if (employeeId.equalsIgnoreCase(searchTerm)
-                        || employeeName.equalsIgnoreCase(searchTerm)
-                        || employeeStatus.equalsIgnoreCase(searchTerm)
-                        || password.equalsIgnoreCase(searchTerm)) {
+            while (x.hasNextLine()) {
+                String line = x.nextLine();
+                String[] data = line.split(",");
 
-                    
-                    tableModel.addRow(new Object[]{employeeId, employeeName, employeeStatus, password});
-                    found = true;
+                if (data.length >= 4) {
+                    String employeeId = data[0].trim();
+                    String employeeName = data[1].trim();
+                    String employeeStatus = data[2].trim();
+                    String password = data[3].trim();
+
+                    if (employeeId.equalsIgnoreCase(searchTerm)
+                            || employeeName.equalsIgnoreCase(searchTerm)
+                            || employeeStatus.equalsIgnoreCase(searchTerm)
+                            || password.equalsIgnoreCase(searchTerm)) {
+
+                        tableModel.addRow(new Object[]{employeeId, employeeName, employeeStatus, password});
+                        found = true;
+                    }
                 }
             }
-
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);

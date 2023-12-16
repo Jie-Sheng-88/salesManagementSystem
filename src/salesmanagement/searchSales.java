@@ -1,6 +1,5 @@
 package salesmanagement;
 
-
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -11,19 +10,17 @@ import javax.swing.table.DefaultTableModel;
 public class searchSales {
 
     public static Scanner x;
-    
+
     public static void main(String[] args) {
         String filepath = "src\\sales.csv";//change your file path
 
-        String searchTerm = JOptionPane.showInputDialog(null,
-        "Enter the search term:"
+        String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Sales Id"
                 + "\n-Date & Time"
                 + "\n-Car Plate"
                 + "\n-Customer Id"
                 + "\n-Employee Id"
-                + "\n(Any one above)",
-        "Search", JOptionPane.INFORMATION_MESSAGE);
+                + "\n(Any one above)");
 
         readRecords(searchTerm, filepath);
     }
@@ -31,35 +28,38 @@ public class searchSales {
     public static void readRecords(String searchTerm, String filepath) {
         boolean found = false;
 
-        DefaultTableModel tableModel = new DefaultTableModel();
-        tableModel.addColumn("Sales ID");
-        tableModel.addColumn("Date & Time");
-        tableModel.addColumn("Car Plate");
-        tableModel.addColumn("Customer ID");
-        tableModel.addColumn("Employee ID");
-
         try {
             x = new Scanner(new File(filepath));
-            x.useDelimiter("[,\n]");
 
-            while (x.hasNext()) {
-                String salesId = x.next();
-                String dateTime = x.next();
-                String carPlate = x.next();
-                String custId = x.next();
-                String employeeId = x.next();
+            DefaultTableModel tableModel = new DefaultTableModel();
+            tableModel.addColumn("Sales ID");
+            tableModel.addColumn("Date & Time");
+            tableModel.addColumn("Car Plate");
+            tableModel.addColumn("Customer ID");
+            tableModel.addColumn("Employee ID");
 
-                if (salesId.equalsIgnoreCase(searchTerm)
-                        || dateTime.equalsIgnoreCase(searchTerm)
-                        || carPlate.equalsIgnoreCase(searchTerm)
-                        || custId.equalsIgnoreCase(searchTerm)
-                        || employeeId.equalsIgnoreCase(searchTerm)) {
+            while (x.hasNextLine()) {
+                String line = x.nextLine();
+                String[] data = line.split(",");
 
-                    tableModel.addRow(new Object[]{salesId, dateTime, carPlate, custId, employeeId});
-                    found = true;
+                if (data.length >= 5) {
+                    String salesId = data[0].trim();
+                    String dateTime = data[1].trim();
+                    String carPlate = data[2].trim();
+                    String custId = data[3].trim();
+                    String employeeId = data[4].trim();
+
+                    if (salesId.equalsIgnoreCase(searchTerm)
+                            || dateTime.equalsIgnoreCase(searchTerm)
+                            || carPlate.equalsIgnoreCase(searchTerm)
+                            || custId.equalsIgnoreCase(searchTerm)
+                            || employeeId.equalsIgnoreCase(searchTerm)) {
+
+                        tableModel.addRow(new Object[]{salesId, dateTime, carPlate, custId, employeeId});
+                        found = true;
+                    }
                 }
             }
-
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);
