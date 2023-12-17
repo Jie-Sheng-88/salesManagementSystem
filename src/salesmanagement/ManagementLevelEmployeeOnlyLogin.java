@@ -28,7 +28,7 @@ public class ManagementLevelEmployeeOnlyLogin {
                 JOptionPane.showMessageDialog(null, "Your salary is: RM " + salary);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Login failed. Incorrect username or password.");");
+            JOptionPane.showMessageDialog(null, "Login failed. Incorrect username or password.");
         }
     }
 
