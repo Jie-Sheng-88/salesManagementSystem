@@ -318,7 +318,7 @@ public class vehicleDataEntering extends javax.swing.JFrame {
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 530, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/5.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -110, 950, 790));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, -1));
 
         setSize(new java.awt.Dimension(914, 607));
         setLocationRelativeTo(null);
