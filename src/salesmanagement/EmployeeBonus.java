@@ -16,15 +16,14 @@ public class EmployeeBonus {
             }
 
             double commissionRate = getCommissionRate(totalSalesAmount);
+
             double bonus = totalSalesAmount * commissionRate;
 
-            System.out.println("Commission Bonus: " + bonus);
-
             return bonus;
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return 0.0;
     }
 

@@ -3,6 +3,7 @@ package salesmanagement;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
 public class EmployeeSalaryManager {
     private EmployeeInfoManager employeeInfoManager;
     public EmployeeSalaryManager(EmployeeInfoManager employeeInfoManager) {
@@ -23,7 +24,6 @@ public class EmployeeSalaryManager {
                 if (ID.equals(salesData[4])) {
                     System.out.println("Employee Data: \n" + employeeInfoManager.getEmployeeInfo(ID));
                     employeeStatus = employeeInfoManager.getEmployeeStatus(ID) + "";
-                    System.out.println("The real employee status: " + employeeStatus);
                     break;
                 }
             }
@@ -33,7 +33,6 @@ public class EmployeeSalaryManager {
                 basicSalary = 1200;
                 allowance = 250;
             } else if (employeeStatus.equals("1")) {
-                System.out.println(" X ");
                 basicSalary = 2200;
                 allowance = 350;
             } else {
@@ -63,7 +62,7 @@ public class EmployeeSalaryManager {
                         totalCommission += 0.01 * salesPrice;
                     }
                 } catch (NumberFormatException e) {
-                    System.err.println("Error parsing salesPrice: " + salesPriceStr);
+
                 }
             }
         }

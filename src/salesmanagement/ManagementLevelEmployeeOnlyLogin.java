@@ -1,6 +1,5 @@
 package salesmanagement;
 
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.io.BufferedReader;
@@ -8,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ManagementLevelEmployeeOnlyLogin {
-
     public static void main(String[] args) {
         String ID = JOptionPane.showInputDialog("Enter your ID:");
         String password = JOptionPane.showInputDialog("Enter your password:");
@@ -30,7 +28,7 @@ public class ManagementLevelEmployeeOnlyLogin {
                 JOptionPane.showMessageDialog(null, "Your salary is: RM " + salary);
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Login failed. Incorrect username or password.");
+            JOptionPane.showMessageDialog(null, "Login failed. Incorrect username or password.");");
         }
     }
 
@@ -60,6 +58,7 @@ public class ManagementLevelEmployeeOnlyLogin {
         }
         frame.add(scrollPane);
         frame.pack();
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

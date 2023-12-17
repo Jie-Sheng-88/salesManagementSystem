@@ -36,7 +36,6 @@ public class EmployeeInfoManager {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            e.printStackTrace();
         }
         return -1;
     }
