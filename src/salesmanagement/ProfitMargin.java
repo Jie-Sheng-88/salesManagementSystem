@@ -31,7 +31,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class ProfitMargin extends javax.swing.JPanel {
 
+    EmployeeInfoManager employeeInfoManager = new EmployeeInfoManager();
     FilterandSum p = new FilterandSum();
+    TotalSalaries totalSalaries = new TotalSalaries(employeeInfoManager);
+    private double salaries = totalSalaries.calculateTotal();
     private int sumDecember;
     private int costDecember;
     private double marginDecember;
@@ -61,8 +64,8 @@ public class ProfitMargin extends javax.swing.JPanel {
         frame.getContentPane().add(practice5);
 
         // Set JFrame properties
-        frame.setSize(900, 570);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1233, 661);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null); // Center the frame on the screen
 
         // Make the JFrame visible
@@ -118,7 +121,6 @@ public class ProfitMargin extends javax.swing.JPanel {
             LocalDateTime endDateDecember = LocalDateTime.parse("2023-12-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJanuary = LocalDateTime.parse("2024-01-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateFebruary = LocalDateTime.parse("2024-02-29T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
-
             List<Integer> salesDecember = p.filterSalesPrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
             List<Integer> accquireDecember = p.filterAccquirePrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
             List<Integer> salesJanuary = p.filterSalesPrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
@@ -152,7 +154,6 @@ public class ProfitMargin extends javax.swing.JPanel {
 
     public double expenses() {
         double rent = 2500;
-        double salaries = 151157.9;
         double Utilitybill = 750.1;
         double insurance = 800;
         double Officesupply = 100;
@@ -237,6 +238,8 @@ public class ProfitMargin extends javax.swing.JPanel {
         jLabel43 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
 
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -495,7 +498,7 @@ public class ProfitMargin extends javax.swing.JPanel {
 
         jLabel38.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel38.setText("Net profit (RM) = Total revenue - Cost of Car Sold -Total expenses  ");
-        jPanel9.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 530, 50));
+        jPanel9.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 490, 50));
 
         jLabel39.setFont(new java.awt.Font("Segoe UI Light", 1, 14)); // NOI18N
         jLabel39.setText("=");
@@ -559,6 +562,14 @@ public class ProfitMargin extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 90, 30));
+
+        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        jLabel44.setText("Press the \"MergeDataset\" and exit for the first time to load the data");
+        add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 310, 60));
+
+        jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel45.setText("Press enter to load the value in the text field");
+        add(jLabel45, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 280, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -613,10 +624,9 @@ public class ProfitMargin extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
         run();
     }
-    
 
     public void run() {
         String salesFilePath = "src\\sales.csv";
@@ -687,7 +697,7 @@ public class ProfitMargin extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-      if (sumFebruary != 0 && costFebruary != 0) {
+        if (sumFebruary != 0 && costFebruary != 0) {
             try {
                 jTextField5.setText(Integer.toString(sumFebruary) + "-" + Integer.toString(costFebruary) + "-" + Double.toString(expense));
             } catch (Exception e) {
@@ -711,7 +721,7 @@ public class ProfitMargin extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-         if (sumFebruary != 0 && costFebruary != 0) {
+        if (sumFebruary != 0 && costFebruary != 0) {
             try {
                 jTextField7.setText("(" + Double.toString(sumFebruary - costFebruary - expense) + "/" + Integer.toString(costFebruary) + ")" + "x100%");
             } catch (Exception e) {
@@ -723,7 +733,7 @@ public class ProfitMargin extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-      if (sumFebruary != 0 && costFebruary != 0) {
+        if (sumFebruary != 0 && costFebruary != 0) {
             try {
                 double margin = (sumFebruary - costFebruary - expense) / costFebruary * 100;
                 String formattedMargin = String.format("%.2f", margin);
@@ -777,6 +787,8 @@ public class ProfitMargin extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

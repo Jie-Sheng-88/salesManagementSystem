@@ -34,7 +34,7 @@ import org.jfree.chart.axis.NumberAxis;
 
 public class SalesInsight extends javax.swing.JPanel {
 
-    int count = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0;
+    int count = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0,count7=0,count8=0;
     FilterandSum o = new FilterandSum();
 
     /**
@@ -57,6 +57,7 @@ public class SalesInsight extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -79,7 +80,7 @@ public class SalesInsight extends javax.swing.JPanel {
         jLabel1.setText("Sales Information");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 460, -1));
 
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton6.setText("MergeDataset");
         jButton6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.lightGray, java.awt.Color.white, java.awt.Color.lightGray, java.awt.Color.lightGray));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +88,10 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton6ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 20, 150, 40));
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 40, 130, 30));
+
+        jLabel7.setText("Press the \"MergeDataset\" and exit for the first time to load the data");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 400, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1280, 70));
 
@@ -98,7 +102,7 @@ public class SalesInsight extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/11.png"))); // NOI18N
         jLabel3.setText("Accquire price of by month");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 520, 120));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 520, 120));
 
         jButton2.setBackground(new java.awt.Color(249, 170, 206));
         jButton2.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -109,7 +113,7 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 130, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 130, 30));
 
         jButton3.setBackground(new java.awt.Color(249, 170, 206));
         jButton3.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -120,19 +124,19 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 130, 30));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 130, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 153, 102));
         jLabel4.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/11.png"))); // NOI18N
         jLabel4.setText("Total sales cases by month");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 470, 110));
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 470, 110));
 
         jLabel2.setBackground(new java.awt.Color(255, 153, 102));
         jLabel2.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/11.png"))); // NOI18N
         jLabel2.setText("Total sales cases of each employee        ");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 580, 100));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 580, 110));
 
         jButton1.setBackground(new java.awt.Color(249, 170, 206));
         jButton1.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -143,13 +147,13 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, 130, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 220, 130, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 153, 102));
         jLabel5.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/11.png"))); // NOI18N
         jLabel5.setText("Customer Engagement");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 420, -1));
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 420, -1));
 
         jButton4.setBackground(new java.awt.Color(249, 170, 206));
         jButton4.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -160,13 +164,13 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, 130, -1));
+        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 290, 130, -1));
 
         jLabel6.setBackground(new java.awt.Color(255, 153, 102));
         jLabel6.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/11.png"))); // NOI18N
         jLabel6.setText("Total sales by month");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 520, 120));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 520, 120));
 
         jButton5.setBackground(new java.awt.Color(249, 170, 206));
         jButton5.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -177,9 +181,9 @@ public class SalesInsight extends javax.swing.JPanel {
                 jButton5ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 560, 130, -1));
+        jPanel2.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 380, 130, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 1290, 690));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 900, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     public static void main(String[] args) {
@@ -193,7 +197,7 @@ public class SalesInsight extends javax.swing.JPanel {
         frame.getContentPane().add(sales);
 
         // Set JFrame properties
-        frame.setSize(500, 300);
+        frame.setSize(900, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
 
@@ -305,6 +309,12 @@ public class SalesInsight extends javax.swing.JPanel {
                 if (dateTimeString.contains("2023-12")) {
                     count6++;
                 }
+                if (dateTimeString.contains("2024-01")) {
+                    count7++;
+                }
+                if (dateTimeString.contains("2024-02")) {
+                    count8++;
+                }
 
             }
 
@@ -329,13 +339,15 @@ public class SalesInsight extends javax.swing.JPanel {
     private JFreeChart createLineChart() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(count, "Months", "June");
-        dataset.addValue(count1, "Months", "July");
-        dataset.addValue(count2, "Months", "August");
-        dataset.addValue(count3, "Months", "September");
-        dataset.addValue(count4, "Months", "October");
-        dataset.addValue(count5, "Months", "November");
-        dataset.addValue(count6, "Months", "December");
+        dataset.addValue(count, "Months", "June 2023");
+        dataset.addValue(count1, "Months", "July 2023");
+        dataset.addValue(count2, "Months", "August 2023");
+        dataset.addValue(count3, "Months", "September 2023");
+        dataset.addValue(count4, "Months", "October 2023");
+        dataset.addValue(count5, "Months", "November 2023");
+        dataset.addValue(count6, "Months", "December 2023");
+        dataset.addValue(count7, "Months", "January 2024");
+        dataset.addValue(count8, "Months", "February 2024");
 
         JFreeChart lineChart = ChartFactory.createLineChart(
                 "Total Sales Cases by months",
@@ -449,6 +461,8 @@ public class SalesInsight extends javax.swing.JPanel {
             LocalDateTime startDateOctober = LocalDateTime.parse("2023-10-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateNovember = LocalDateTime.parse("2023-11-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateDecember = LocalDateTime.parse("2023-12-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateJanuary = LocalDateTime.parse("2024-01-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateFebruary = LocalDateTime.parse("2024-02-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJune = LocalDateTime.parse("2023-06-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJuly = LocalDateTime.parse("2023-07-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateAugust = LocalDateTime.parse("2023-08-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
@@ -456,6 +470,8 @@ public class SalesInsight extends javax.swing.JPanel {
             LocalDateTime endDateOctober = LocalDateTime.parse("2023-10-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateNovember = LocalDateTime.parse("2023-11-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateDecember = LocalDateTime.parse("2023-12-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateJanuary = LocalDateTime.parse("2024-01-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateFebruary = LocalDateTime.parse("2024-02-29T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
 
             List<Integer> salesJune = o.filterSalesPrice(filePath, startDateJune, endDateJune, dateTimePattern);
             List<Integer> salesJuly = o.filterSalesPrice(filePath, startDateJuly, endDateJuly, dateTimePattern);
@@ -464,6 +480,8 @@ public class SalesInsight extends javax.swing.JPanel {
             List<Integer> salesOctober = o.filterSalesPrice(filePath, startDateOctober, endDateOctober, dateTimePattern);
             List<Integer> salesNovember = o.filterSalesPrice(filePath, startDateNovember, endDateNovember, dateTimePattern);
             List<Integer> salesDecember = o.filterSalesPrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
+            List<Integer> salesJanuary = o.filterSalesPrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
+            List<Integer> salesFebruary = o.filterSalesPrice(filePath, startDateFebruary, endDateFebruary, dateTimePattern);
 
             int sumJune = o.calculateSum(salesJune);
             int sumJuly = o.calculateSum(salesJuly);
@@ -472,24 +490,28 @@ public class SalesInsight extends javax.swing.JPanel {
             int sumOctober = o.calculateSum(salesOctober);
             int sumNovember = o.calculateSum(salesNovember);
             int sumDecember = o.calculateSum(salesDecember);
+            int sumJanuary = o.calculateSum(salesJanuary);
+            int sumFebruary = o.calculateSum(salesFebruary);
 
             // Create a bar chart
-            createBarChart(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember);
+            createBarChart(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember,sumJanuary,sumFebruary);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void createBarChart(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember) {
+    private static void createBarChart(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember,int sumJanuary,int sumFebruary) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(sumJune, "Sales", "June");
-        dataset.addValue(sumJuly, "Sales", "July");
-        dataset.addValue(sumAugust, "Sales", "August");
-        dataset.addValue(sumSeptember, "Sales", "September");
-        dataset.addValue(sumOctober, "Sales", "October");
-        dataset.addValue(sumNovember, "Sales", "November");
-        dataset.addValue(sumDecember, "Sales", "December");
+        dataset.addValue(sumJune, "Sales", "June 2023");
+        dataset.addValue(sumJuly, "Sales", "July 2023");
+        dataset.addValue(sumAugust, "Sales", "August 2023");
+        dataset.addValue(sumSeptember, "Sales", "September 2023");
+        dataset.addValue(sumOctober, "Sales", "October 2023");
+        dataset.addValue(sumNovember, "Sales", "November 2023");
+        dataset.addValue(sumDecember, "Sales", "December 2023");
+        dataset.addValue(sumJanuary, "Sales", "January 2024");
+        dataset.addValue(sumFebruary, "Sales", "February 2024");
 
         // Create a bar chart
         JFreeChart chart = ChartFactory.createBarChart(
@@ -533,6 +555,8 @@ public class SalesInsight extends javax.swing.JPanel {
             LocalDateTime startDateOctober = LocalDateTime.parse("2023-10-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateNovember = LocalDateTime.parse("2023-11-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateDecember = LocalDateTime.parse("2023-12-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateJanuary = LocalDateTime.parse("2024-01-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateFebruary = LocalDateTime.parse("2024-02-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJune = LocalDateTime.parse("2023-06-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJuly = LocalDateTime.parse("2023-07-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateAugust = LocalDateTime.parse("2023-08-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
@@ -540,6 +564,8 @@ public class SalesInsight extends javax.swing.JPanel {
             LocalDateTime endDateOctober = LocalDateTime.parse("2023-10-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateNovember = LocalDateTime.parse("2023-11-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateDecember = LocalDateTime.parse("2023-12-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateJanuary = LocalDateTime.parse("2024-01-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateFebruary = LocalDateTime.parse("2024-02-29T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
 
             List<Integer> accquireJune = o.filterAccquirePrice(filePath, startDateJune, endDateJune, dateTimePattern);
             List<Integer> accquireJuly = o.filterAccquirePrice(filePath, startDateJuly, endDateJuly, dateTimePattern);
@@ -548,6 +574,8 @@ public class SalesInsight extends javax.swing.JPanel {
             List<Integer> accquireOctober = o.filterAccquirePrice(filePath, startDateOctober, endDateOctober, dateTimePattern);
             List<Integer> accquireNovember = o.filterAccquirePrice(filePath, startDateNovember, endDateNovember, dateTimePattern);
             List<Integer> accquireDecember = o.filterAccquirePrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
+            List<Integer> accquireJanuary = o.filterAccquirePrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
+            List<Integer> accquireFebruary = o.filterAccquirePrice(filePath, startDateFebruary , endDateFebruary , dateTimePattern);
 
             int sumJune = o.calculateSum1(accquireJune);
             int sumJuly = o.calculateSum1(accquireJuly);
@@ -559,24 +587,28 @@ public class SalesInsight extends javax.swing.JPanel {
             int sumOctober = o.calculateSum1(accquireOctober);
             int sumNovember = o.calculateSum1(accquireNovember);
             int sumDecember = o.calculateSum1(accquireDecember);
+            int sumJanuary = o.calculateSum1(accquireJanuary);
+            int sumFebruary = o.calculateSum1(accquireFebruary);
 
             // Create a bar chart
-            createBarChart2(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember);
+            createBarChart2(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember,sumJanuary,sumFebruary);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void createBarChart2(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember) {
+    private static void createBarChart2(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember,int sumJanuary,int sumFebruary) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.addValue(sumJune, "Cost", "June");
-        dataset.addValue(sumJuly, "Cost", "July");
-        dataset.addValue(sumAugust, "Cost", "August");
-        dataset.addValue(sumSeptember, "Cost", "September");
-        dataset.addValue(sumOctober, "Cost", "October");
-        dataset.addValue(sumNovember, "Cost", "November");
-        dataset.addValue(sumDecember, "Cost", "December");
+        dataset.addValue(sumJune, "Cost", "June 2023");
+        dataset.addValue(sumJuly, "Cost", "July 2023");
+        dataset.addValue(sumAugust, "Cost", "August 2023");
+        dataset.addValue(sumSeptember, "Cost", "September 2023");
+        dataset.addValue(sumOctober, "Cost", "October 2023");
+        dataset.addValue(sumNovember, "Cost", "November 2023");
+        dataset.addValue(sumDecember, "Cost", "December 2023");
+        dataset.addValue(sumJanuary, "Cost", "January 2024");
+        dataset.addValue(sumFebruary, "Cost", "February 2024");
 
         // Create a bar chart
         JFreeChart chart = ChartFactory.createBarChart(
@@ -696,6 +728,7 @@ public class SalesInsight extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
