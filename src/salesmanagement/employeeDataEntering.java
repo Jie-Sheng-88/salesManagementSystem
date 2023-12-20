@@ -67,6 +67,7 @@ public class employeeDataEntering extends javax.swing.JFrame {
         leCars = new javax.swing.JLabel();
         javaRides = new javax.swing.JLabel();
         since2004 = new javax.swing.JLabel();
+        btnSearchData = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,7 +127,7 @@ public class employeeDataEntering extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 390));
 
         btnAddData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnAddData.setText("Add Data");
@@ -180,6 +181,14 @@ public class employeeDataEntering extends javax.swing.JFrame {
         since2004.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 10)); // NOI18N
         since2004.setText("--SINCE 2004--");
         getContentPane().add(since2004, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 40, 80, 10));
+
+        btnSearchData.setText("Search Data");
+        btnSearchData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSearchData, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/2.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
@@ -282,6 +291,11 @@ public class employeeDataEntering extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void btnSearchDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDataActionPerformed
+        // TODO add your handling code here:
+        searchEmployee.main(new String[]{});
+    }//GEN-LAST:event_btnSearchDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -320,6 +334,7 @@ public class employeeDataEntering extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddData;
     private javax.swing.JButton btnImportDataFromCSV;
+    private javax.swing.JButton btnSearchData;
     private javax.swing.JLabel employeeId;
     private javax.swing.JLabel employeeInformation;
     private javax.swing.JLabel employeeName;

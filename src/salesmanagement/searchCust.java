@@ -1,5 +1,6 @@
 package salesmanagement;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -63,6 +64,8 @@ public class searchCust {
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);
+                scrollPane.setPreferredSize(new Dimension(650, 400));
+
                 JOptionPane.showMessageDialog(null, scrollPane, "Search Results", JOptionPane.INFORMATION_MESSAGE);
 
             } else {

@@ -1,5 +1,6 @@
 package salesmanagement;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
@@ -71,6 +72,8 @@ public class searchVehicle {
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);
+                scrollPane.setPreferredSize(new Dimension(700, 400));
+
                 JOptionPane.showMessageDialog(null, scrollPane, "Search Results", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Record not found");
@@ -120,6 +123,8 @@ public class searchVehicle {
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);
+                scrollPane.setPreferredSize(new Dimension(700, 400));
+
                 JOptionPane.showMessageDialog(null, scrollPane, "Search Results", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "Record not found");

@@ -64,6 +64,7 @@ public class salesDataEntering extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        btnSearchData = new javax.swing.JButton();
         background1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,7 +124,7 @@ public class salesDataEntering extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 400));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 490, 390));
 
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -170,6 +171,14 @@ public class salesDataEntering extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255,80));
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 280, 40));
+
+        btnSearchData.setText("Search Data");
+        btnSearchData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSearchData, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 530, -1, -1));
 
         background1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/9.jpg"))); // NOI18N
         getContentPane().add(background1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
@@ -270,6 +279,11 @@ public class salesDataEntering extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
 
+    private void btnSearchDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDataActionPerformed
+        // TODO add your handling code here:
+        searchSales.main(new String[]{});
+    }//GEN-LAST:event_btnSearchDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +325,7 @@ public class salesDataEntering extends javax.swing.JFrame {
     private javax.swing.JLabel background1;
     private javax.swing.JButton btnAddData;
     private javax.swing.JButton btnImportDataFromCSV;
+    private javax.swing.JButton btnSearchData;
     private javax.swing.JLabel carPlate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
