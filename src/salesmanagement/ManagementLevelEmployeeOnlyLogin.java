@@ -7,29 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ManagementLevelEmployeeOnlyLogin {
-    public static void main(String[] args) {
-        String ID = JOptionPane.showInputDialog("Enter your ID:");
-        String password = JOptionPane.showInputDialog("Enter your password:");
 
-        EmployeeLoginManager employeeLoginManager = new EmployeeLoginManager();
+    public static void main(String[] args) {
+
         EmployeeInfoManager employeeInfoManager = new EmployeeInfoManager();
         EmployeeSalaryManager employeeSalaryManager = new EmployeeSalaryManager(employeeInfoManager);
         EmployeeDataManager employeeDataManager = new EmployeeDataManager(employeeSalaryManager);
 
-        if (employeeLoginManager.isValidLogin(ID, password)) {
-            String employeeInfo = employeeInfoManager.getEmployeeInfo(ID);
-            JOptionPane.showMessageDialog(null, "Login successful!\n" + employeeInfo);
-
-            int status = employeeInfoManager.getEmployeeStatus(ID);
-            if (status == 1) {
-                showEmployeeTable(employeeDataManager);
-            } else {
-                double salary = employeeSalaryManager.calculateSalary(ID);
-                JOptionPane.showMessageDialog(null, "Your salary is: RM " + salary);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Login failed. Incorrect username or password.");
-        }
+        showEmployeeTable(employeeDataManager);
     }
 
     private static void showEmployeeTable(EmployeeDataManager employeeDataManager) {
@@ -104,3 +89,5 @@ public class ManagementLevelEmployeeOnlyLogin {
         return totalSalesRecords > 15 || totalSalesAmount > 1000000;
     }
 }
+
+
