@@ -181,8 +181,7 @@ public class SalesInsight extends javax.swing.JPanel {
         jLabel7.setText("Press the \"MergeDataset\" and exit for the first time to load the data");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, 30));
 
-        jPanel2.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255,80));
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 700, 370));
 
         LeCars.setFont(new java.awt.Font("Freestyle Script", 0, 50)); // NOI18N
