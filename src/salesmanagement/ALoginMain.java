@@ -4,6 +4,8 @@
  */
 package salesmanagement;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
@@ -18,7 +20,7 @@ public class ALoginMain extends javax.swing.JFrame {
      */
     public ALoginMain() {
         initComponents();
-    }    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,6 +154,7 @@ public class ALoginMain extends javax.swing.JFrame {
 
         if (login_1.check(username, password)) {
             try {
+                writeUsernameToFile(username);
                 viewinfo userInfo = new viewinfo(username);
                 if (userInfo.getStatus().equals("1")) {
                     InfoViewManagement managementEmployeeWindow = new InfoViewManagement();
@@ -171,6 +174,11 @@ public class ALoginMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_LoginBtnActionPerformed
+    private void writeUsernameToFile(String username) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\username.txt"))) {
+            writer.write(username);
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -215,7 +223,7 @@ public class ALoginMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-         java.awt.EventQueue.invokeLater(new Runnable() {
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ALoginMain().setVisible(true);
             }

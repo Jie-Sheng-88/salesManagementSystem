@@ -563,10 +563,10 @@ public class ProfitMargin extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 190, 90, 30));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 90, 30));
 
-        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel44.setText("Press the \"MergeDataset\" and exit for the first time to load the data");
+        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel44.setText("Press the \"MergeDataset\" and reload");
         add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 310, 60));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -579,7 +579,7 @@ public class ProfitMargin extends javax.swing.JPanel {
                 ReloadButtonActionPerformed(evt);
             }
         });
-        add(ReloadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, -1, -1));
+        add(ReloadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 200, 80, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

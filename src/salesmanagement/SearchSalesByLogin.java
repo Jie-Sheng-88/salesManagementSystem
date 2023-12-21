@@ -35,8 +35,14 @@ import javax.swing.table.TableRowSorter;
  * @author veron
  */
 public class SearchSalesByLogin {
-    
-private static Scanner x;
+
+    private static Scanner x;
+
+    private static String readUsernameFromFile() throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("src\\username.txt"))) {
+            return reader.readLine();
+        }
+    }
 
     public static void SearchSalesByLogin() {
         String salesFilePath = "src\\sales.csv";
@@ -52,8 +58,16 @@ private static Scanner x;
             e.printStackTrace();
         }
         
-        
-        String employeeId = JOptionPane.showInputDialog("Enter Employee ID:");
+        try {
+            String employeeId = readUsernameFromFile();
+            JTable resultTable = readRecords(employeeId, salesAndCustFilePath);
+            addSearchFilter(resultTable);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+
+        /*String employeeId = JOptionPane.showInputDialog("Enter Employee ID:");
         String password = JOptionPane.showInputDialog("Enter Password:");
 
         if (isValidLogin(employeeId, password, employeeFilePath)) {
@@ -89,8 +103,9 @@ private static Scanner x;
             }
         }
         return false;
+    }*/
     }
-    
+
     public static JTable readRecords(String employeeId, String filepath) {
         boolean found = false;
 
@@ -134,7 +149,6 @@ private static Scanner x;
                 scrollPane.setPreferredSize(new Dimension(1100, 400));
 
                 //JOptionPane.showMessageDialog(null, scrollPane, "Sales Information for Employee ID " + employeeId, JOptionPane.INFORMATION_MESSAGE);
-
                 return resultTable;
             } else {
                 JOptionPane.showMessageDialog(null, "No sales information found for Employee ID " + employeeId);
@@ -237,4 +251,3 @@ private static Scanner x;
         rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
     }
 }
-
