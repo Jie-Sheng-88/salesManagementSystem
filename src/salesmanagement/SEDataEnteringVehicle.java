@@ -66,6 +66,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         btnImportDataFromCSV = new javax.swing.JButton();
         btnAddData = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btnSearchData = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -258,6 +259,14 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, -1, -1));
 
+        btnSearchData.setText("Search Data");
+        btnSearchData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchDataActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSearchData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/5.jpg"))); // NOI18N
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, -1));
 
@@ -401,6 +410,12 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnSearchDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchDataActionPerformed
+        // TODO add your handling code here:
+        SearchVehicle searchVehicle = new SearchVehicle();
+        searchVehicle.SearchVehicle();
+    }//GEN-LAST:event_btnSearchDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -504,6 +519,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JButton btnAddData;
     private javax.swing.JButton btnImportDataFromCSV;
+    private javax.swing.JButton btnSearchData;
     private javax.swing.JLabel carModel;
     private javax.swing.JLabel carPlate;
     private javax.swing.JLabel carStatus;

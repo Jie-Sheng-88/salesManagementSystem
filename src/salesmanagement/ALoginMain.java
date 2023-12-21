@@ -18,11 +18,7 @@ public class ALoginMain extends javax.swing.JFrame {
      */
     public ALoginMain() {
         initComponents();
-    }
-    
-    public String getEnteredUsername() {
-        return enterId.getText();
-    }
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -219,8 +215,10 @@ public class ALoginMain extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new ALoginMain().setVisible(true);
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ALoginMain().setVisible(true);
+            }
         });
     }
 
