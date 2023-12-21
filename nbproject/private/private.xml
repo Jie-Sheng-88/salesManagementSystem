@@ -3,41 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/EmployeeBonus.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SalesManagement.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/Register.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/DataEnteringEmployee.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/importCustomer.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SEDataEnteringCustomer.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/EmployeeSalaryManager.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ReadCSV.java</file>
             <file>file:/C:/onemain/salesAssignment/src/salesmanagement/InfoViewSales.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/viewinfo.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/registeration.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/DataEnteringCustomer.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/importSales.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ReadFile.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SearchVehicle.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/EmployeeInfoManager.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ALoginMain.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/TotalSalaries.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/login_1.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/EmployeeDataManager.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SearchSalesByLogin.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ProfitMargin.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SalaryAndBonus.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/InfoViewManagement.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/DataEnteringSales.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/importVehicle.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SearchCustomer.java</file>
             <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SalesInsight.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/importEmployee.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/FilterandSum.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SEDataEnteringVehicle.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/DataEnteringVehicle.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SearchEmployee.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SEDataEnteringSales.java</file>
-            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/SearchSales.java</file>
+            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ProfitMargin.java</file>
+            <file>file:/C:/onemain/salesAssignment/src/username.txt</file>
+            <file>file:/C:/onemain/salesAssignment/src/vehicle.csv</file>
+            <file>file:/C:/onemain/salesAssignment/src/salesmanagement/ALoginMain.java</file>
+            <file>file:/C:/onemain/salesAssignment/src/pic/loginpage.png</file>
         </group>
     </open-files>
 </project-private>
