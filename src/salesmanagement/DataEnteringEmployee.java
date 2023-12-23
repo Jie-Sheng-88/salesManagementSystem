@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,12 +33,15 @@ import javax.swing.table.TableRowSorter;
 import static salesmanagement.ReadFile.data;
 
 public class DataEnteringEmployee extends javax.swing.JFrame {
-
+private String employeeID;
+private String newEmpID;
+private String empStatus;
     /**
      * Creates new form employeeDataEntering1
      */
-    public DataEnteringEmployee() {
+    public DataEnteringEmployee(String employeeID) {
         initComponents();
+        this.employeeID = employeeID;
     }
 
     /**
@@ -51,7 +55,6 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
 
         txtEmpID = new javax.swing.JTextField();
         txtEmpName = new javax.swing.JTextField();
-        txtEmpStatus = new javax.swing.JTextField();
         employeeId = new javax.swing.JLabel();
         employeeName = new javax.swing.JLabel();
         employeeStatus = new javax.swing.JLabel();
@@ -67,6 +70,7 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
         leCars = new javax.swing.JLabel();
         javaRides = new javax.swing.JLabel();
         since2004 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         btnSearchData = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -87,13 +91,6 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmpName, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 200, 170, 30));
-
-        txtEmpStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmpStatusActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtEmpStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 170, 30));
 
         employeeId.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         employeeId.setText("Employee ID:");
@@ -183,6 +180,14 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
         since2004.setText("--SINCE 2004--");
         getContentPane().add(since2004, new org.netbeans.lib.awtextra.AbsoluteConstraints(774, 40, 80, 10));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sales Employee", "Management Level Employee" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 170, 30));
+
         btnSearchData.setText("Search Data");
         btnSearchData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,7 +205,7 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 520, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/2.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, 600));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -160, 900, 600));
 
         setSize(new java.awt.Dimension(914, 607));
         setLocationRelativeTo(null);
@@ -213,11 +218,18 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
         String filePath = "src//employee.csv";
-        if (txtEmpID.getText().equals("") || txtEmpName.getText().equals("") || txtEmpStatus.getText().equals("") || txtPassword.getText().equals("")) {
+        if (txtEmpID.getText().equals("") || txtEmpName.getText().equals("")  || txtPassword.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
+        } else if (!EmpIDCheckValidate(txtEmpID.getText()) || !EmpNameCheckValidate(txtEmpName.getText()) || EmpStatusCheckValidate(empStatus) || !EmpPasswordCheckValidate(txtPassword.getText())) {
+            JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
+                    + "Employee ID: You must have enter \"E\" and 4 digit numbers.\n"
+                    + "Employee Name: You must enter at least 1 capital letter and 1 small letter.\n"
+                    + "Employee Status: You must choose at least 1 from the dropdown menu.\n"
+                    + "Employee Password: You must enter at least 1 letter and 1 small letter (at least 6 characters).\n");
         } else {
-
-            String data[] = {txtEmpID.getText(), txtEmpName.getText(), txtEmpStatus.getText(), txtPassword.getText()};
+              
+            
+            String data[] = {txtEmpID.getText(), txtEmpName.getText(), empStatus, txtPassword.getText()};
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
             try {
@@ -234,7 +246,6 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
             txtEmpID.setText("");
             txtEmpName.setText("");
             txtEmpName.setText("");
-            txtEmpStatus.setText("");
             txtPassword.setText("");
 
         }
@@ -268,10 +279,6 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
     private void txtEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmpIDActionPerformed
-
-    private void txtEmpStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmpStatusActionPerformed
 
     private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
         // TODO add your handling code here:
@@ -308,15 +315,58 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        InfoViewManagement infoViewManagement = new InfoViewManagement();
+        InfoViewManagement infoViewManagement = new InfoViewManagement(this.employeeID);
         infoViewManagement.InfoViewManagement();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+       String selectedValue = jComboBox1.getSelectedItem().toString();
+       if(selectedValue.equals("Sales Employee")){
+           this.empStatus = "0";
+       }
+       else if(selectedValue.equals("Management Level Employee")){
+           this.empStatus = "1";
+       }else {
+           this.empStatus = "null";
+       }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void DataEnteringEmployee() {
+     private String generateNewSalesID(Object[] tableLines) {
+        if (tableLines.length > 0) {
+            // Get the last entry from tableLines
+            String lastEntry = tableLines[tableLines.length - 1].toString();
+
+            // Split the last entry to get the salesID
+            String[] parts = lastEntry.split(",");
+            String lastSalesID = parts[0];
+
+            // Extract the numeric part of the salesID and increment it
+            int numericPart = Integer.parseInt(lastSalesID.substring(1));
+            numericPart++;
+
+            // Format the new salesID
+            return "E" + String.format("%04d", numericPart);
+        }
+        return null;
+    }
+     private boolean EmpIDCheckValidate(String txtInput) {
+        return txtInput.matches("E\\d{4}");
+    }
+     private boolean EmpNameCheckValidate(String txtInput) {
+        return txtInput.matches("^[A-Z][a-z]+(?: [A-Z][a-z]+)*$");
+    }
+      private boolean EmpStatusCheckValidate(String txtInput) {
+        return txtInput.matches("null");
+    }
+       private boolean EmpPasswordCheckValidate(String txtInput) {
+        return txtInput.matches("^(?=.*[A-Za-z])(?=.*\\d).{8}");
+    }
+
+    public void DataEnteringEmployee() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -358,7 +408,7 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataEnteringEmployee().setVisible(true);
+                new DataEnteringEmployee(employeeID).setVisible(true);
             }
         });
     }
@@ -372,6 +422,7 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel employeeName;
     private javax.swing.JLabel employeeStatus;
     private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
@@ -382,7 +433,6 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel since2004;
     private javax.swing.JTextField txtEmpID;
     private javax.swing.JTextField txtEmpName;
-    private javax.swing.JTextField txtEmpStatus;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables

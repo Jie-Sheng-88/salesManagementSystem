@@ -4,17 +4,28 @@
  */
 package salesmanagement;
 
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import javax.swing.JFrame;
+
 /**
  *
  * @author veron
  */
 public class InfoViewSales extends javax.swing.JFrame {
 
+    private String employeeID;
     /**
      * Creates new form salesEmployeeLogin
      */
-    public InfoViewSales() {
+    public InfoViewSales(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+    public void close(){
+        WindowEvent closeWindow = new WindowEvent (this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 
     /**
@@ -81,41 +92,42 @@ public class InfoViewSales extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SEDataEnteringCustomer seDataEnteringCustomer = new SEDataEnteringCustomer();
+        SEDataEnteringCustomer seDataEnteringCustomer = new SEDataEnteringCustomer(this.employeeID);
         seDataEnteringCustomer.SEDataEnteringCustomer();
-        dispose();
+        close();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         SearchSalesByLogin searchSalesByLogin = new SearchSalesByLogin();
         searchSalesByLogin.SearchSalesByLogin();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        SEDataEnteringVehicle seDataEnteringForVehicle = new SEDataEnteringVehicle();
+        SEDataEnteringVehicle seDataEnteringForVehicle = new SEDataEnteringVehicle(this.employeeID);
         seDataEnteringForVehicle.SEDataEnteringVehicle();
-        dispose();
+        close();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        SEDataEnteringSales seDataEnteringSales = new SEDataEnteringSales();
+        SEDataEnteringSales seDataEnteringSales = new SEDataEnteringSales(this.employeeID);
         seDataEnteringSales.SEDataEnteringSales();
-        dispose();
+        close();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         ALoginMain.main(new String []{});
-        dispose();
+        close();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void InfoViewSales() {
+    public void InfoViewSales() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -153,11 +165,11 @@ public class InfoViewSales extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
+         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InfoViewSales().setVisible(true);
+                new InfoViewSales(employeeID).setVisible(true);
             }
         });
     }

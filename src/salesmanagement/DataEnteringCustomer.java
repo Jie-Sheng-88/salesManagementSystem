@@ -28,12 +28,13 @@ import javax.swing.table.TableRowSorter;
  */
 public class DataEnteringCustomer extends javax.swing.JFrame {
 
-    private int counter = 99;
-
+    private String employeeID;
+    private int counter;
     /**
      * Creates new form customerDataEntering
      */
-    public DataEnteringCustomer() {
+    public DataEnteringCustomer(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
     }
 
@@ -214,43 +215,25 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPostcodeActionPerformed
 
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
-        // TODO add your handling code here:
-//     String filePath = "src//cust.csv";
-//        File file = new File(filePath);
-//        if (txtCustName.getText().equals("")|| txtPhoneNum.getText().equals("")||txtPostcode.getText().equals("")){
-//            JOptionPane.showMessageDialog(this, "Please Enter All Data!");
-//        }else {
-//            String id = "C" + String.format("%04d", counter++);
-//          
-//            String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(),txtPostcode.getText()};
-//            DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
-//            tblModel.addRow(data);
-//            
-//            
-//           
-//      
-//            try {
-//                FileWriter w = new FileWriter(filePath,true);
-//                CSVWriter csv = new CSVWriter(w, CSVWriter.DEFAULT_SEPARATOR, CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
-//                csv.writeNext(data);
-//                csv.close();
-//                w.close();
-//        
-//            } catch (IOException ex) {
-//                Logger.getLogger(salesDataEntering.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//            JOptionPane.showMessageDialog(this, "Add Data Successfully!");
-//
-//            txtCustName.setText("");
-//            txtPhoneNum.setText("");
-//            txtPostcode.setText("");
-//
-//        }
+       
         String filePath = "src//cust.csv";
         if (txtCustName.getText().equals("") || txtPhoneNum.getText().equals("") || txtPostcode.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
+        } else if (!custNameCheckValidate(txtCustName.getText()) || !phoneNumberCheckValidate(txtPhoneNum.getText()) || !postcodeCheckValidate(txtPostcode.getText())) {
+            JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
+                    + "Customer Name: You must at least 1 capital letter and small letter.\n"
+                    + "Phone Number: You must enter 9 digit numbers.\n"
+                    + "Postcode: You must enter 5 digits.");
         } else {
-
+             try{
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+            String input;
+            int count = 0;
+            while ((input = bufferedReader.readLine()) != null) {
+                this.counter = count++;
+            }} catch (IOException ex){
+                Logger.getLogger(DataEnteringSales.class.getName()).log(Level.SEVERE, null, ex);
+            }
             String id = "C" + String.format("%04d", counter++);
 
             String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(), txtPostcode.getText()};
@@ -335,7 +318,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InfoViewManagement infoViewManagement = new InfoViewManagement();
+        InfoViewManagement infoViewManagement = new InfoViewManagement(this.employeeID);
         infoViewManagement.InfoViewManagement();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -343,7 +326,18 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void CustomerDataEntering() {
+    private boolean custNameCheckValidate(String txtInput) {
+        return txtInput.matches("^[A-Z][a-z]+(?: [A-Z][a-z]+)*$");
+    }
+
+    private boolean phoneNumberCheckValidate(String txtInput) {
+        return txtInput.matches("[0-9]{9}");
+    }
+
+    private boolean postcodeCheckValidate(String txtInput) {
+        return txtInput.matches("[0-9]{5}");
+    }
+    public void CustomerDataEntering() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -385,7 +379,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataEnteringCustomer().setVisible(true);
+                new DataEnteringCustomer(employeeID).setVisible(true);
             }
         });
     }

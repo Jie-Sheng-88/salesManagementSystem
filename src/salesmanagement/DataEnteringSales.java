@@ -5,9 +5,12 @@
 package salesmanagement;
 
 import com.opencsv.CSVWriter;
+import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
 import java.time.format.DateTimeFormatter;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,6 +20,7 @@ import java.time.ZonedDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
@@ -28,13 +32,21 @@ import javax.swing.table.TableRowSorter;
  */
 public class DataEnteringSales extends javax.swing.JFrame {
 
-    int counter = 101;
-
+   
+    private String employeeID;
+    private String newSalesID;
     /**
      * Creates new form salesDataEntering
      */
-    public DataEnteringSales() {
+    public DataEnteringSales(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+
+    public void close() {
+        WindowEvent closeWindow = new WindowEvent(this, WindowEvent.WINDOW_CLOSING);
+        Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(closeWindow);
     }
 
     /**
@@ -209,16 +221,27 @@ public class DataEnteringSales extends javax.swing.JFrame {
         String filePath = "src//sales.csv";
         if (txtCarPlate.getText().equals("") || txtCustID.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
+        } else if (!custIDCheckValidate(txtCustID.getText()) || !carPlateCheckValidate(txtCarPlate.getText())) {
+            JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
+                    + "Car Plate: You must have 3 capital letters and at least 1 digit numbers.\n"
+                    + "Customer ID: You must enter capital letter \"C\" and 4 digit numbers. Example: C0000, C0001, etc.\n");
         } else {
-
-            String id = "A" + String.format("%04d", counter++);
+            try {
+                BufferedReader br = new BufferedReader(new FileReader(filePath));
+                Object[] tableLines = br.lines().toArray();
+                String newSalesID = generateNewSalesID(tableLines);
+                this.newSalesID = newSalesID;
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(SEDataEnteringSales.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("uuuu-MM-dd");
             DateTimeFormatter dt = DateTimeFormatter.ofPattern("HH:mm:ss");
             LocalDateTime localDateTime = LocalDateTime.now();
             ZonedDateTime zonedDateTime = ZonedDateTime.of(localDateTime, ZoneId.systemDefault());
             String together = dtf.format(localDateTime) + "T" + dt.format(localDateTime) + "Z";
 
-            String data[] = {id, together, txtCarPlate.getText(), txtCustID.getText(), "0"};
+            String data[] = {this.newSalesID, together, txtCarPlate.getText(), txtCustID.getText(), employeeID};
 
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
@@ -271,7 +294,7 @@ public class DataEnteringSales extends javax.swing.JFrame {
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_txtSearchKeyPressed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
@@ -296,15 +319,42 @@ public class DataEnteringSales extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        InfoViewManagement infoViewManagement = new InfoViewManagement();
+        InfoViewManagement infoViewManagement = new InfoViewManagement(this.employeeID);
         infoViewManagement.InfoViewManagement();
-        dispose();
+        close();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void DataEnteringSales() {
+    private String generateNewSalesID(Object[] tableLines) {
+        if (tableLines.length > 0) {
+            // Get the last entry from tableLines
+            String lastEntry = tableLines[tableLines.length - 1].toString();
+
+            // Split the last entry to get the salesID
+            String[] parts = lastEntry.split(",");
+            String lastSalesID = parts[0];
+
+            // Extract the numeric part of the salesID and increment it
+            int numericPart = Integer.parseInt(lastSalesID.substring(1));
+            numericPart++;
+
+            // Format the new salesID
+            return "A" + String.format("%04d", numericPart);
+        }
+        return null;
+    }
+
+    private boolean carPlateCheckValidate(String txtInput) {
+        return txtInput.matches("[A-Z]{3}\\d+");
+    }
+
+    private boolean custIDCheckValidate(String txtInput) {
+        return txtInput.matches("C\\d{4}");
+    }
+
+    public void DataEnteringSales() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -334,13 +384,11 @@ public class DataEnteringSales extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
-
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DataEnteringSales().setVisible(true);
+                new DataEnteringSales(employeeID).setVisible(true);
             }
         });
     }

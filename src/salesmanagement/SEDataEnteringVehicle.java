@@ -24,10 +24,13 @@ import javax.swing.table.TableRowSorter;
  */
 public class SEDataEnteringVehicle extends javax.swing.JFrame {
 
+    private String employeeID;
+    private String vehicleStatus;
     /**
      * Creates new form vehicleDataEntering
      */
-    public SEDataEnteringVehicle() {
+    public SEDataEnteringVehicle(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
     }
 
@@ -56,10 +59,11 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         carStatus = new javax.swing.JLabel();
         soldPrice = new javax.swing.JLabel();
         txtSoldPrice = new javax.swing.JTextField();
-        txtCarStatus = new javax.swing.JTextField();
         txtAcqPrice = new javax.swing.JTextField();
         txtCarModel = new javax.swing.JTextField();
         txtCarPlate = new javax.swing.JTextField();
+        carPlate1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         vehicleInformation = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -164,19 +168,12 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         });
         jPanel1.add(txtSoldPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 220, 170, 30));
 
-        txtCarStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCarStatusActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtCarStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 170, 170, 30));
-
         txtAcqPrice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAcqPriceActionPerformed(evt);
             }
         });
-        jPanel1.add(txtAcqPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 120, 170, 30));
+        jPanel1.add(txtAcqPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 170, 30));
 
         txtCarModel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +189,20 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         });
         jPanel1.add(txtCarPlate, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 20, 170, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 350, 270));
+        carPlate1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        carPlate1.setForeground(new java.awt.Color(255, 255, 255));
+        carPlate1.setText("Car Plate:");
+        jPanel1.add(carPlate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 20, -1, 27));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Null", "Sold", "In Stock" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 170, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 350, 270));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255,80));
 
@@ -268,7 +278,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         getContentPane().add(btnSearchData, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/5.jpg"))); // NOI18N
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 900, -1));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, -1));
 
         setSize(new java.awt.Dimension(914, 607));
         setLocationRelativeTo(null);
@@ -280,15 +290,12 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
 
     private void txtCarModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarModelActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_txtCarModelActionPerformed
 
     private void txtAcqPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAcqPriceActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAcqPriceActionPerformed
-
-    private void txtCarStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCarStatusActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCarStatusActionPerformed
 
     private void txtSoldPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSoldPriceActionPerformed
         // TODO add your handling code here:
@@ -297,11 +304,19 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
         // TODO add your handling code here:
         String filePath = "src//vehicle.csv";
-        if (txtCarPlate.getText().equals("") || txtCarModel.getText().equals("") || txtAcqPrice.getText().equals("") || txtCarStatus.getText().equals("")) {
+        if (txtCarPlate.getText().equals("") || txtCarModel.getText().equals("") || txtAcqPrice.getText().equals("") ) {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
+        } else if (!carPlateCheckValidate(txtCarPlate.getText()) || !carModelCheckValidate(txtCarModel.getText())|| !carAcqPriceCheckValidate(txtAcqPrice.getText()) || carStatusCheckValidate(vehicleStatus)) {
+            JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
+                    + "Car Plate: You must have 3 capital letters and at least 1 digit numbers.\n"
+                    + "Car Model: You must have at least 1 capital letters and 1 small letter.\n"
+                    + "Car Acquired Price: You must enter at least 1 digit numbers.\n"
+                    + "Car Status: You must choose 1 from the dropdown menu.\n");
         } else {
-
-            String data[] = {txtCarPlate.getText(), txtCarModel.getText(), txtAcqPrice.getText(), txtCarStatus.getText(), txtSoldPrice.getText()};
+            if(txtSoldPrice.getText().equals("")||vehicleStatus.equals("1")){
+                txtSoldPrice.setText("empty");
+            }
+            String data[] = {txtCarPlate.getText(), txtCarModel.getText(), txtAcqPrice.getText(), vehicleStatus, txtSoldPrice.getText()};
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();
             tblModel.addRow(data);
             try {
@@ -318,7 +333,6 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
             txtCarPlate.setText("");
             txtCarModel.setText("");
             txtAcqPrice.setText("");
-            txtCarStatus.setText("");
             txtSoldPrice.setText("");
 
         }
@@ -350,8 +364,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
                 }
                 System.out.println(dataRow.length);
                 for (int j = 0; j < dataRow.length; j++) {
-                    // Check if the column is empty
-                    System.out.println(dataRow.length);
+                    
                     if (dataRow[j] == null || dataRow[j].isBlank() || dataRow[j].isEmpty()) {
                         // Add "empty" to empty cells
                         dataRow[j] = "empty";
@@ -405,7 +418,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        InfoViewSales infoViewSales = new InfoViewSales();
+        InfoViewSales infoViewSales = new InfoViewSales(this.employeeID);
         infoViewSales.InfoViewSales();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -416,10 +429,37 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         searchVehicle.SearchVehicle();
     }//GEN-LAST:event_btnSearchDataActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        String selectedValue = jComboBox1.getSelectedItem().toString();
+        if(selectedValue.equals("Sold")){
+            this.vehicleStatus = "0";
+        }
+        else if(selectedValue.equals("In Stock")){
+            this.vehicleStatus = "1";
+        }else {
+            this.vehicleStatus = "null";
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void SEDataEnteringVehicle() {
+    private boolean carPlateCheckValidate(String txtInput) {
+        return txtInput.matches("[A-Z]{3}\\d+");
+    }
+
+    private boolean carAcqPriceCheckValidate(String txtInput) {
+        return txtInput.matches("\\d+");
+    }
+
+    private boolean carStatusCheckValidate(String txtInput) {
+        return txtInput.equals("null");
+    }
+    private boolean carModelCheckValidate(String txtInput) {
+        return txtInput.matches("^[A-Z][a-z]+(?: [A-Z][a-z]+)*$");
+    }
+
+    public void SEDataEnteringVehicle() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -509,7 +549,7 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SEDataEnteringVehicle().setVisible(true);
+                new SEDataEnteringVehicle(employeeID).setVisible(true);
             }
         });
     }
@@ -522,8 +562,10 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
     private javax.swing.JButton btnSearchData;
     private javax.swing.JLabel carModel;
     private javax.swing.JLabel carPlate;
+    private javax.swing.JLabel carPlate1;
     private javax.swing.JLabel carStatus;
     private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -539,7 +581,6 @@ public class SEDataEnteringVehicle extends javax.swing.JFrame {
     private javax.swing.JTextField txtAcqPrice;
     private javax.swing.JTextField txtCarModel;
     private javax.swing.JTextField txtCarPlate;
-    private javax.swing.JTextField txtCarStatus;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSoldPrice;
     private javax.swing.JLabel vehicleInformation;

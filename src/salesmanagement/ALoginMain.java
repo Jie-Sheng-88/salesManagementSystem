@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * @author veron
  */
 public class ALoginMain extends javax.swing.JFrame {
-
+   private String userID;
     /**
      * Creates new form login
      */
@@ -151,17 +151,18 @@ public class ALoginMain extends javax.swing.JFrame {
         // TODO add your handling code here:
         String username = enterId.getText();
         String password = enterPassword.getText();
+        setuserID(username);
 
         if (login_1.check(username, password)) {
             try {
                 writeUsernameToFile(username);
                 viewinfo userInfo = new viewinfo(username);
                 if (userInfo.getStatus().equals("1")) {
-                    InfoViewManagement managementEmployeeWindow = new InfoViewManagement();
+                    InfoViewManagement managementEmployeeWindow = new InfoViewManagement(this.userID);
                     managementEmployeeWindow.setVisible(true);
                     dispose();
                 } else if (userInfo.getStatus().equals("0")) {
-                    InfoViewSales salesEmployeeWindow = new InfoViewSales();
+                    InfoViewSales salesEmployeeWindow = new InfoViewSales(this.userID);
                     salesEmployeeWindow.setVisible(true);
                     dispose();
                 } else {
@@ -173,13 +174,19 @@ public class ALoginMain extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Invalid username or password", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_LoginBtnActionPerformed
     private void writeUsernameToFile(String username) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("src\\username.txt"))) {
             writer.write(username);
         }
     }
-
+    public String getuserID(){
+            return userID;
+        }
+        public void setuserID (String userID){
+            this.userID = userID;
+        }
     /**
      * @param args the command line arguments
      */

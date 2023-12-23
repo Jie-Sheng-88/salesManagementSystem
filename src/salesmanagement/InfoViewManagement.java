@@ -12,10 +12,13 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author veron
  */
+
 public class InfoViewManagement extends javax.swing.JFrame {
 
-    public InfoViewManagement() {
+    private String employeeID;
+    public InfoViewManagement(String employeeID) {
         initComponents();
+        this.employeeID = employeeID;
     }
 
     /**
@@ -109,28 +112,28 @@ public class InfoViewManagement extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        DataEnteringCustomer customerDataEntering = new DataEnteringCustomer();
+        DataEnteringCustomer customerDataEntering = new DataEnteringCustomer(this.employeeID);
         customerDataEntering.CustomerDataEntering();
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        DataEnteringEmployee employeeDataEntering = new DataEnteringEmployee();
+        DataEnteringEmployee employeeDataEntering = new DataEnteringEmployee(this.employeeID);
         employeeDataEntering.DataEnteringEmployee();
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        DataEnteringSales salesDataEntering = new DataEnteringSales();
+        DataEnteringSales salesDataEntering = new DataEnteringSales(this.employeeID);
         salesDataEntering.DataEnteringSales();
         dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        DataEnteringVehicle vehicleDataEntering = new DataEnteringVehicle();
+        DataEnteringVehicle vehicleDataEntering = new DataEnteringVehicle(this.employeeID);
         vehicleDataEntering.DataEnteringVehicle();
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -164,7 +167,7 @@ public class InfoViewManagement extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void InfoViewManagement() {
+    public void InfoViewManagement() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -198,7 +201,7 @@ public class InfoViewManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InfoViewManagement().setVisible(true);
+                new InfoViewManagement(employeeID).setVisible(true);
             }
         });
     }
