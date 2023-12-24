@@ -222,7 +222,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
         } else if (!custNameCheckValidate(txtCustName.getText()) || !phoneNumberCheckValidate(txtPhoneNum.getText()) || !postcodeCheckValidate(txtPostcode.getText())) {
             JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
                     + "Customer Name: You must at least 1 capital letter and small letter.\n"
-                    + "Phone Number: You must enter 9 digit numbers.\n"
+                    + "Phone Number: You must enter 10/11 digit numbers.\n"
                     + "Postcode: You must enter 5 digits.");
         } else {
              try{
@@ -331,7 +331,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
     }
 
     private boolean phoneNumberCheckValidate(String txtInput) {
-        return txtInput.matches("[0-9]{9}");
+        return txtInput.matches("[0-9]{10,11}");
     }
 
     private boolean postcodeCheckValidate(String txtInput) {
