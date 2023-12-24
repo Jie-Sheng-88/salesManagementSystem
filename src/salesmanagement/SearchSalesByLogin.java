@@ -232,7 +232,7 @@ public class SearchSalesByLogin {
         JPanel searchPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         searchPanel.add(searchLabel);
         searchPanel.add(searchField);
-        searchField.setPreferredSize(new Dimension(150, 20));
+        searchField.setPreferredSize(new Dimension(150, 25));
         JFrame frame = new JFrame("Sales and Customer Information");
         frame.setLayout(new BorderLayout());
         frame.add(searchPanel, BorderLayout.NORTH);

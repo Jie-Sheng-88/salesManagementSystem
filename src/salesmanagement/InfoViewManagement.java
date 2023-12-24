@@ -154,13 +154,14 @@ public class InfoViewManagement extends javax.swing.JFrame {
         // TODO add your handling code here:
         SalesInsight salesInsight = new SalesInsight();
         salesInsight.SalesInsight();
+        dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         ProfitMargin profitMargin = new ProfitMargin();
         profitMargin.ProfitMargin();
-        
+        dispose();
                 
     }//GEN-LAST:event_jButton8ActionPerformed
 
