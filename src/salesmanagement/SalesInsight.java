@@ -36,12 +36,12 @@ import org.jfree.chart.axis.NumberAxis;
 public class SalesInsight extends javax.swing.JPanel {
 
     int count = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0,count7=0,count8=0;
+    private static String employeeID;
     FilterandSum o = new FilterandSum();
 
-    /**
-     * Creates new form Practice5
-     */
-    public SalesInsight() {
+
+    public SalesInsight(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
 
     }
@@ -223,7 +223,7 @@ public class SalesInsight extends javax.swing.JPanel {
         // Create a JFrame to host the Practice5 panel
         JFrame frame = new JFrame("Chart Application");
 
-        SalesInsight sales = new SalesInsight();
+        SalesInsight sales = new SalesInsight(employeeID);
 
         // Add the Practice5 panel to the JFrame
         frame.getContentPane().add(sales);
@@ -684,7 +684,7 @@ public class SalesInsight extends javax.swing.JPanel {
         JFrame newFrame = new JFrame("Chart Application");
 
         // Instantiate your Practice5 class
-        SalesInsight sales = new SalesInsight();
+        SalesInsight sales = new SalesInsight(employeeID);
 
         // Add the Practice5 panel to the new JFrame
         newFrame.getContentPane().add(sales);
@@ -772,7 +772,7 @@ public class SalesInsight extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        InfoViewManagement infoViewManagement = new InfoViewManagement();
+        InfoViewManagement infoViewManagement = new InfoViewManagement(employeeID);
         infoViewManagement.InfoViewManagement();
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         frame.dispose();

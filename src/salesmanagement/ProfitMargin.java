@@ -46,8 +46,9 @@ public class ProfitMargin extends javax.swing.JPanel {
     private int costFebruary;
     private double marginFebruary;
     double expense = expenses();
-
-    public ProfitMargin() {
+    private static String employeeID;
+    public ProfitMargin(String employeeID) {
+        this.employeeID = employeeID;
         initComponents();
         profitmargin();
         showlinechart();
@@ -59,7 +60,7 @@ public class ProfitMargin extends javax.swing.JPanel {
         JFrame frame = new JFrame("Chart Application");
 
         // Instantiate your Practice5 class
-        ProfitMargin practice5 = new ProfitMargin();
+        ProfitMargin practice5 = new ProfitMargin(employeeID);
 
         // Add the Practice5 panel to the JFrame
         frame.getContentPane().add(practice5);
@@ -774,7 +775,7 @@ public class ProfitMargin extends javax.swing.JPanel {
         JFrame newFrame = new JFrame("Chart Application");
 
         // Instantiate your Practice5 class
-        ProfitMargin practice5 = new ProfitMargin();
+        ProfitMargin practice5 = new ProfitMargin(employeeID);
 
         // Add the Practice5 panel to the new JFrame
         newFrame.getContentPane().add(practice5);
@@ -790,7 +791,7 @@ public class ProfitMargin extends javax.swing.JPanel {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        InfoViewManagement infoViewManagement = new InfoViewManagement();
+        InfoViewManagement infoViewManagement = new InfoViewManagement(employeeID);
         infoViewManagement.InfoViewManagement();
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         frame.dispose();
