@@ -20,7 +20,6 @@ public class FilterandSum {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
-            // Skip the header line
             reader.readLine();
 
             while ((line = reader.readLine()) != null) {
@@ -29,7 +28,6 @@ public class FilterandSum {
 
                 LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(dateTimePattern));
 
-                // Check if the date-time is within the specified range
                 if (dateTime.isAfter(startDate) && dateTime.isBefore(endDate)) {
                     String salesPriceStr = row[9].trim();
                     int salesPrice = Integer.parseInt(salesPriceStr);
@@ -60,7 +58,6 @@ public class FilterandSum {
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
-            // Skip the header line
             reader.readLine();
 
             while ((line = reader.readLine()) != null) {
@@ -69,9 +66,8 @@ public class FilterandSum {
 
                 LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(dateTimePattern));
 
-                // Check if the date-time is within the specified range
                 if (dateTime.isAfter(startDate) && dateTime.isBefore(endDate)) {
-                    String accquirePriceStr = row[7].trim(); // Assuming accquirePrice is in the 7th column
+                    String accquirePriceStr = row[7].trim(); 
                     int accquirePrice = Integer.parseInt(accquirePriceStr);
                     accquirePrices.add(accquirePrice);
                 }

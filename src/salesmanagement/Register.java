@@ -6,10 +6,6 @@ package salesmanagement;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author veron
- */
 public class Register extends javax.swing.JFrame {
 
     /**

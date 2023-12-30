@@ -8,10 +8,6 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
-/**
- *
- * @author veron
- */
 public class InfoViewSales extends javax.swing.JFrame {
 
     private String employeeID;

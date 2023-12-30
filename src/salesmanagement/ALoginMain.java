@@ -9,10 +9,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author veron
- */
 public class ALoginMain extends javax.swing.JFrame {
    private String userID;
     /**

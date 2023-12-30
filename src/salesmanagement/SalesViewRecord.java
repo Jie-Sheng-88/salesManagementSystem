@@ -30,10 +30,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author veron
- */
 public class SalesViewRecord {
 
     private static Scanner x;
@@ -57,7 +53,7 @@ public class SalesViewRecord {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         try {
             String employeeId = readUsernameFromFile();
             JTable resultTable = readRecords(employeeId, salesAndCustFilePath);
@@ -65,45 +61,7 @@ public class SalesViewRecord {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
 
-        /*String employeeId = JOptionPane.showInputDialog("Enter Employee ID:");
-        String password = JOptionPane.showInputDialog("Enter Password:");
-
-        if (isValidLogin(employeeId, password, employeeFilePath)) {
-            JTable resultTable = readRecords(employeeId, salesAndCustFilePath);
-            addSearchFilter(resultTable);
-        } else {
-            JOptionPane.showMessageDialog(null, "Invalid ID or password");
-        }
-    }
-
-    public static boolean isValidLogin(String enteredEmployeeId, String enteredPassword, String filePath) {
-        try {
-            x = new Scanner(new File(filePath));
-
-            while (x.hasNextLine()) {
-                String line = x.nextLine();
-                String[] data = line.split(",");
-
-                if (data.length >= 4) {
-                    String employeeId = data[0].trim();
-                    String password = data[3].trim();
-
-                    if (employeeId.equals(enteredEmployeeId) && password.equals(enteredPassword)) {
-                        return true;
-                    }
-                }
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error reading file");
-        } finally {
-            if (x != null) {
-                x.close();
-            }
-        }
-        return false;
-    }*/
     }
 
     public static JTable readRecords(String employeeId, String filepath) {
@@ -148,7 +106,7 @@ public class SalesViewRecord {
                 JScrollPane scrollPane = new JScrollPane(resultTable);
                 scrollPane.setPreferredSize(new Dimension(1100, 400));
 
-                //JOptionPane.showMessageDialog(null, scrollPane, "Sales Information for Employee ID " + employeeId, JOptionPane.INFORMATION_MESSAGE);
+                
                 return resultTable;
             } else {
                 JOptionPane.showMessageDialog(null, "No sales information found for Employee ID " + employeeId);
