@@ -34,7 +34,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author veron
  */
-public class SearchSalesByLogin {
+public class SalesViewRecord {
 
     private static Scanner x;
 
@@ -44,7 +44,7 @@ public class SearchSalesByLogin {
         }
     }
 
-    public static void SearchSalesByLogin() {
+    public static void SalesViewRecord() {
         String salesFilePath = "src\\sales.csv";
         String custFilePath = "src\\cust.csv";
         String salesAndCustFilePath = "src\\searchAndCust.csv";
