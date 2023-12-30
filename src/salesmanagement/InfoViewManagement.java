@@ -8,11 +8,6 @@ import java.io.IOException;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author veron
- */
-
 public class InfoViewManagement extends javax.swing.JFrame {
 
     private String employeeID;
