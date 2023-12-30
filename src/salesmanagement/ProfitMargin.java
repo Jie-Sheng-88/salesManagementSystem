@@ -26,16 +26,30 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-/**
- *
- * @author LIM XIN MEI
- */
 public class ProfitMargin extends javax.swing.JPanel {
 
     EmployeeInfoManager employeeInfoManager = new EmployeeInfoManager();
     FilterandSum p = new FilterandSum();
     TotalSalaries totalSalaries = new TotalSalaries(employeeInfoManager);
     private double salaries = totalSalaries.calculateTotal();
+    private int sumJune;
+    private int costJune;
+    private double marginJune;
+    private int sumJuly;
+    private int costJuly;
+    private double marginJuly;
+    private int sumAugust;
+    private int costAugust;
+    private double marginAugust;
+    private int sumSeptember;
+    private int costSeptember;
+    private double marginSeptember;
+    private int sumOctober;
+    private int costOctober;
+    private double marginOctober;
+    private int sumNovember;
+    private int costNovember;
+    private double marginNovember;
     private int sumDecember;
     private int costDecember;
     private double marginDecember;
@@ -45,8 +59,9 @@ public class ProfitMargin extends javax.swing.JPanel {
     private int sumFebruary;
     private int costFebruary;
     private double marginFebruary;
-    double expense = expenses();
+    private double expense = expenses();
     private static String employeeID;
+
     public ProfitMargin(String employeeID) {
         this.employeeID = employeeID;
         initComponents();
@@ -56,21 +71,16 @@ public class ProfitMargin extends javax.swing.JPanel {
 
     public static void ProfitMargin() {
 
-        // Create a JFrame to host the Practice5 panel
         JFrame frame = new JFrame("Chart Application");
 
-        // Instantiate your Practice5 class
-        ProfitMargin practice5 = new ProfitMargin(employeeID);
+        ProfitMargin margin = new ProfitMargin(employeeID);
 
-        // Add the Practice5 panel to the JFrame
-        frame.getContentPane().add(practice5);
+        frame.getContentPane().add(margin);
 
-        // Set JFrame properties
         frame.setSize(1233, 661);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setLocationRelativeTo(null); // Center the frame on the screen
+        frame.setLocationRelativeTo(null);
 
-        // Make the JFrame visible
         frame.setVisible(true);
 
     }
@@ -78,12 +88,12 @@ public class ProfitMargin extends javax.swing.JPanel {
     public void showlinechart() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        dataset.addValue(-1.27, "Months", "June 2023");
-        dataset.addValue(0.16, "Months", "July 2023");
-        dataset.addValue(0.86, "Months", "August 2023");
-        dataset.addValue(0.31, "Months", "September 2023");
-        dataset.addValue(-8.43, "Months", "October 2023");
-        dataset.addValue(0, "Months", "November 2023");
+        dataset.addValue(marginJune, "Months", "June 2023");
+        dataset.addValue(marginJuly, "Months", "July 2023");
+        dataset.addValue(marginAugust, "Months", "August 2023");
+        dataset.addValue(marginSeptember, "Months", "September 2023");
+        dataset.addValue(marginOctober, "Months", "October 2023");
+        dataset.addValue(marginNovember, "Months", "November 2023");
         dataset.addValue(marginDecember, "Months", "December 2023");
         dataset.addValue(marginJanuary, "Months", "January 2024");
         dataset.addValue(marginFebruary, "Months", "February 2024");
@@ -103,13 +113,8 @@ public class ProfitMargin extends javax.swing.JPanel {
     }
 
     private void ChartAppearance(JFreeChart chart) {
-        // Get the plot (the part of the chart where the data is displayed)
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
-
-        // Customize the background color
         plot.setBackgroundPaint(Color.BLACK);
-
-        // Customize the line color
         plot.getRenderer().setSeriesPaint(0, Color.YELLOW);
     }
 
@@ -117,25 +122,69 @@ public class ProfitMargin extends javax.swing.JPanel {
         try {
             String filePath = "src\\newdataset.csv";
             String dateTimePattern = "yyyy-MM-dd'T'HH:mm:ssXXX";
+            LocalDateTime startDateJune = LocalDateTime.parse("2023-06-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateJuly = LocalDateTime.parse("2023-07-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateAugust = LocalDateTime.parse("2023-08-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateSeptember = LocalDateTime.parse("2023-09-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateOctober = LocalDateTime.parse("2023-10-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime startDateNovember = LocalDateTime.parse("2023-11-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateDecember = LocalDateTime.parse("2023-12-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateJanuary = LocalDateTime.parse("2024-01-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime startDateFebruary = LocalDateTime.parse("2024-02-01T00:00:00+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateJune = LocalDateTime.parse("2023-06-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateJuly = LocalDateTime.parse("2023-07-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateAugust = LocalDateTime.parse("2023-08-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateSeptember = LocalDateTime.parse("2023-09-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateOctober = LocalDateTime.parse("2023-10-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+            LocalDateTime endDateNovember = LocalDateTime.parse("2023-11-30T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateDecember = LocalDateTime.parse("2023-12-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateJanuary = LocalDateTime.parse("2024-01-31T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
             LocalDateTime endDateFebruary = LocalDateTime.parse("2024-02-29T23:59:59+00:00", DateTimeFormatter.ofPattern(dateTimePattern));
+
+            List<Integer> salesJune = p.filterSalesPrice(filePath, startDateJune, endDateJune, dateTimePattern);
+            List<Integer> salesJuly = p.filterSalesPrice(filePath, startDateJuly, endDateJuly, dateTimePattern);
+            List<Integer> salesAugust = p.filterSalesPrice(filePath, startDateAugust, endDateAugust, dateTimePattern);
+            List<Integer> salesSeptember = p.filterSalesPrice(filePath, startDateSeptember, endDateSeptember, dateTimePattern);
+            List<Integer> salesOctober = p.filterSalesPrice(filePath, startDateOctober, endDateOctober, dateTimePattern);
+            List<Integer> salesNovember = p.filterSalesPrice(filePath, startDateNovember, endDateNovember, dateTimePattern);
             List<Integer> salesDecember = p.filterSalesPrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
-            List<Integer> accquireDecember = p.filterAccquirePrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
             List<Integer> salesJanuary = p.filterSalesPrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
-            List<Integer> accquireJanuary = p.filterAccquirePrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
             List<Integer> salesFebruary = p.filterSalesPrice(filePath, startDateFebruary, endDateFebruary, dateTimePattern);
+
+            List<Integer> accquireJune = p.filterAccquirePrice(filePath, startDateJune, endDateJune, dateTimePattern);
+            List<Integer> accquireJuly = p.filterAccquirePrice(filePath, startDateJuly, endDateJuly, dateTimePattern);
+            List<Integer> accquireAugust = p.filterAccquirePrice(filePath, startDateAugust, endDateAugust, dateTimePattern);
+            List<Integer> accquireSeptember = p.filterAccquirePrice(filePath, startDateSeptember, endDateSeptember, dateTimePattern);
+            List<Integer> accquireOctober = p.filterAccquirePrice(filePath, startDateOctober, endDateOctober, dateTimePattern);
+            List<Integer> accquireNovember = p.filterAccquirePrice(filePath, startDateNovember, endDateNovember, dateTimePattern);
+            List<Integer> accquireDecember = p.filterAccquirePrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
+            List<Integer> accquireJanuary = p.filterAccquirePrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
             List<Integer> accquireFebruary = p.filterAccquirePrice(filePath, startDateFebruary, endDateFebruary, dateTimePattern);
 
+            sumJune = p.calculateSum(salesJune);
+            sumJuly = p.calculateSum(salesJuly);
+            sumAugust = p.calculateSum(salesAugust);
+            sumSeptember = p.calculateSum(salesSeptember);
+            sumOctober = p.calculateSum(salesOctober);
+            sumNovember = p.calculateSum(salesNovember);
             sumDecember = p.calculateSum(salesDecember);
+            costJune = p.calculateSum1(accquireJune);
+            costJuly = p.calculateSum1(accquireJuly);
+            costAugust = p.calculateSum1(accquireAugust);
+            costSeptember = p.calculateSum1(accquireSeptember);
+            costOctober = p.calculateSum1(accquireOctober);
+            costNovember = p.calculateSum1(accquireNovember);
             costDecember = p.calculateSum1(accquireDecember);
             sumJanuary = p.calculateSum(salesJanuary);
             costJanuary = p.calculateSum1(accquireJanuary);
             sumFebruary = p.calculateSum(salesFebruary);
             costFebruary = p.calculateSum1(accquireFebruary);
+            marginJune = calculateMargin(sumJune, costJune, expense);
+            marginJuly = calculateMargin(sumJuly, costJuly, expense);
+            marginAugust = calculateMargin(sumAugust, costAugust, expense);
+            marginSeptember = calculateMargin(sumSeptember, costSeptember, expense);
+            marginOctober = calculateMargin(sumOctober, costOctober, expense);
+            marginNovember = calculateMargin(sumNovember, costNovember, expense);
             marginDecember = calculateMargin(sumDecember, costDecember, expense);
             marginJanuary = calculateMargin(sumJanuary, costJanuary, expense);
             marginFebruary = calculateMargin(sumFebruary, costFebruary, expense);
@@ -148,7 +197,7 @@ public class ProfitMargin extends javax.swing.JPanel {
 
     private double calculateMargin(int sum, int cost, double expense) {
         if (sum != 0) {
-            return ((sum - cost - expense) / sum) * 100;
+            return ((sum - cost - expense) /(double) sum) * 100;
         } else {
             return 0.0;
         }
@@ -593,9 +642,9 @@ public class ProfitMargin extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        if (sumDecember != 0 && costDecember != 0) {
+        if (sumJanuary != 0 && costJanuary != 0) {
             try {
-                jTextField1.setText(Integer.toString(sumDecember) + "-" + Integer.toString(costDecember) + "-" + Double.toString(expense));
+                jTextField1.setText(Integer.toString(sumJanuary) + "-" + Integer.toString(costJanuary) + "-" + Double.toString(expense));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -653,11 +702,9 @@ public class ProfitMargin extends javax.swing.JPanel {
         String vehicleFilePath = "src\\vehicle.csv";
 
         try {
-            // Load datasets
             List<String> salesDataset = loadDataset(salesFilePath);
             List<String> vehicleDataset = loadDataset(vehicleFilePath);
 
-            // Merge datasets based on the "carPlate" column
             List<String> mergedDataset = mergeDatasets(salesDataset, vehicleDataset, "carPlate");
             writeMergedContentToFile("src\\newdataset.csv", mergedDataset);
 
@@ -767,30 +814,28 @@ public class ProfitMargin extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void ReloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReloadButtonActionPerformed
-        // TODO add your handling code here:
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         frame.dispose();
 
-        // Create a new JFrame
+
         JFrame newFrame = new JFrame("Chart Application");
 
-        // Instantiate your Practice5 class
-        ProfitMargin practice5 = new ProfitMargin(employeeID);
 
-        // Add the Practice5 panel to the new JFrame
-        newFrame.getContentPane().add(practice5);
+        ProfitMargin margin = new ProfitMargin(employeeID);
 
-        // Set JFrame properties
+
+        newFrame.getContentPane().add(margin);
+
+
         newFrame.setSize(1233, 661);
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        newFrame.setLocationRelativeTo(null); // Center the frame on the screen
+        newFrame.setLocationRelativeTo(null); 
 
-        // Make the new JFrame visible
+
         newFrame.setVisible(true);
     }//GEN-LAST:event_ReloadButtonActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
         InfoViewManagement infoViewManagement = new InfoViewManagement(employeeID);
         infoViewManagement.InfoViewManagement();
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);

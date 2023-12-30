@@ -35,10 +35,9 @@ import org.jfree.chart.axis.NumberAxis;
 
 public class SalesInsight extends javax.swing.JPanel {
 
-    int count = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0,count7=0,count8=0;
+    int count = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0;
     private static String employeeID;
     FilterandSum o = new FilterandSum();
-
 
     public SalesInsight(String employeeID) {
         this.employeeID = employeeID;
@@ -105,7 +104,7 @@ public class SalesInsight extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(255, 153, 102));
         jLabel3.setFont(new java.awt.Font("Microsoft New Tai Lue", 3, 25)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pic/12.png"))); // NOI18N
-        jLabel3.setText("Accquire price by month");
+        jLabel3.setText("Acquire price by month");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 500, -1));
 
         jButton2.setFont(new java.awt.Font("Segoe UI Light", 1, 20)); // NOI18N
@@ -219,21 +218,12 @@ public class SalesInsight extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     public static void SalesInsight() {
-
-        // Create a JFrame to host the Practice5 panel
         JFrame frame = new JFrame("Chart Application");
-
         SalesInsight sales = new SalesInsight(employeeID);
-
-        // Add the Practice5 panel to the JFrame
         frame.getContentPane().add(sales);
-
-        // Set JFrame properties
         frame.setSize(900, 600);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setLocationRelativeTo(null);
-
-        // Make the JFrame visible
         frame.setVisible(true);
     }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -252,16 +242,13 @@ public class SalesInsight extends javax.swing.JPanel {
         plot.setDomainAxis(new CategoryAxis("Employee Id"));
         plot.setRangeAxis(new NumberAxis("Total Sales Cases"));
 
-        // Set custom color for the bars
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
         Color color = new Color(79, 129, 189);
-        renderer.setSeriesPaint(0, color); // Change the color to your desired color
+        renderer.setSeriesPaint(0, color);
 
-        // Set custom background color for the plot
         plot.setBackgroundPaint(new Color(240, 240, 240));
         ChartPanel chartPanel = new ChartPanel(chart);
 
-        // Create a new JFrame to display the chart
         JFrame frame = new JFrame("Bar Chart Application");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(chartPanel);
@@ -279,23 +266,19 @@ public class SalesInsight extends javax.swing.JPanel {
             boolean firstRow = true;
             while ((line = reader.readLine()) != null) {
                 if (firstRow) {
-                    // Skip the first row
                     firstRow = false;
                     continue;
                 }
 
                 String[] row = line.split(",");
-                String employeeId = row[4].trim(); // Assuming employeeId is in the fifth column
+                String employeeId = row[4].trim();
 
-                // Update the count for the employeeId
                 employeeCountMap.put(employeeId, employeeCountMap.getOrDefault(employeeId, 0) + 1);
             }
 
-            // Sort the employee IDs based on their counts in ascending order
             List<Map.Entry<String, Integer>> sortedEntries = new ArrayList<>(employeeCountMap.entrySet());
             sortedEntries.sort(Map.Entry.comparingByValue());
 
-            // Add the counts to the dataset
             for (Map.Entry<String, Integer> entry : sortedEntries) {
                 dataset.addValue(entry.getValue(), "Number of Sales", entry.getKey());
             }
@@ -350,10 +333,8 @@ public class SalesInsight extends javax.swing.JPanel {
 
             }
 
-            // Create the line chart
             JFreeChart lineChart = createLineChart();
 
-            // Display the chart
             displayChart(lineChart);
         } catch (Exception e) {
             e.printStackTrace();
@@ -393,13 +374,10 @@ public class SalesInsight extends javax.swing.JPanel {
     }
 
     private void ChartAppearance(JFreeChart chart) {
-        // Get the plot (the part of the chart where the data is displayed)
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
 
-        // Customize the background color
         plot.setBackgroundPaint(Color.BLACK);
 
-        // Customize the line color
         plot.getRenderer().setSeriesPaint(0, Color.YELLOW);
     }
 
@@ -433,14 +411,9 @@ public class SalesInsight extends javax.swing.JPanel {
         );
         PiePlot plot = (PiePlot) chart.getPlot();
 
-        // Set custom color for the bars
-        plot.setSectionPaint("Number of Sales", new Color(79, 129, 189));
-
-        // Set custom background color for the plot
         plot.setBackgroundPaint(new Color(240, 240, 240));
         ChartPanel chartPanel = new ChartPanel(chart);
 
-        // Create a new JFrame to display the chart
         JFrame frame = new JFrame("Pie Chart Application");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(chartPanel);
@@ -525,15 +498,14 @@ public class SalesInsight extends javax.swing.JPanel {
             int sumJanuary = o.calculateSum(salesJanuary);
             int sumFebruary = o.calculateSum(salesFebruary);
 
-            // Create a bar chart
-            createBarChart(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember,sumJanuary,sumFebruary);
+            createBarChart(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober, sumNovember, sumDecember, sumJanuary, sumFebruary);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void createBarChart(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember,int sumJanuary,int sumFebruary) {
+    private static void createBarChart(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober, int sumNovember, int sumDecember, int sumJanuary, int sumFebruary) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(sumJune, "Sales", "June 2023");
         dataset.addValue(sumJuly, "Sales", "July 2023");
@@ -545,27 +517,23 @@ public class SalesInsight extends javax.swing.JPanel {
         dataset.addValue(sumJanuary, "Sales", "January 2024");
         dataset.addValue(sumFebruary, "Sales", "February 2024");
 
-        // Create a bar chart
         JFreeChart chart = ChartFactory.createBarChart(
-                "Total Sales by Month", // chart title
-                "Month", // category axis label
-                "Total Sales", // value axis label
+                "Total Sales by Month", 
+                "Month",
+                "Total Sales", 
                 dataset
         );
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setDomainAxis(new CategoryAxis("Month"));
         plot.setRangeAxis(new NumberAxis("Total Sales"));
 
-        // Set custom color for the bars
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
         Color color = new Color(79, 129, 189);
-        renderer.setSeriesPaint(0, color); // Change the color to your desired color
+        renderer.setSeriesPaint(0, color); 
 
-        // Set custom background color for the plot
         plot.setBackgroundPaint(new Color(240, 240, 240));
         ChartPanel chartPanel = new ChartPanel(chart);
 
-        // Create a new JFrame to display the chart
         JFrame frame = new JFrame("Bar Chart Application");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(chartPanel);
@@ -607,30 +575,26 @@ public class SalesInsight extends javax.swing.JPanel {
             List<Integer> accquireNovember = o.filterAccquirePrice(filePath, startDateNovember, endDateNovember, dateTimePattern);
             List<Integer> accquireDecember = o.filterAccquirePrice(filePath, startDateDecember, endDateDecember, dateTimePattern);
             List<Integer> accquireJanuary = o.filterAccquirePrice(filePath, startDateJanuary, endDateJanuary, dateTimePattern);
-            List<Integer> accquireFebruary = o.filterAccquirePrice(filePath, startDateFebruary , endDateFebruary , dateTimePattern);
+            List<Integer> accquireFebruary = o.filterAccquirePrice(filePath, startDateFebruary, endDateFebruary, dateTimePattern);
 
             int sumJune = o.calculateSum1(accquireJune);
             int sumJuly = o.calculateSum1(accquireJuly);
-            // Calculate and print the sum of sales prices for August
             int sumAugust = o.calculateSum1(accquireAugust);
-            // Calculate and print the sum of sales prices for September
             int sumSeptember = o.calculateSum1(accquireSeptember);
-            // Calculate and print the sum of sales prices for October
             int sumOctober = o.calculateSum1(accquireOctober);
             int sumNovember = o.calculateSum1(accquireNovember);
             int sumDecember = o.calculateSum1(accquireDecember);
             int sumJanuary = o.calculateSum1(accquireJanuary);
             int sumFebruary = o.calculateSum1(accquireFebruary);
 
-            // Create a bar chart
-            createBarChart2(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober,sumNovember, sumDecember,sumJanuary,sumFebruary);
+            createBarChart2(sumJune, sumJuly, sumAugust, sumSeptember, sumOctober, sumNovember, sumDecember, sumJanuary, sumFebruary);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void createBarChart2(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober,int sumNovember, int sumDecember,int sumJanuary,int sumFebruary) {
+    private static void createBarChart2(int sumJune, int sumJuly, int sumAugust, int sumSeptember, int sumOctober, int sumNovember, int sumDecember, int sumJanuary, int sumFebruary) {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
         dataset.addValue(sumJune, "Cost", "June 2023");
         dataset.addValue(sumJuly, "Cost", "July 2023");
@@ -642,27 +606,27 @@ public class SalesInsight extends javax.swing.JPanel {
         dataset.addValue(sumJanuary, "Cost", "January 2024");
         dataset.addValue(sumFebruary, "Cost", "February 2024");
 
-        // Create a bar chart
+        
         JFreeChart chart = ChartFactory.createBarChart(
-                "Total Accquire Cost of cars by Month", // chart title
-                "Month", // category axis label
-                "Total Accquire Cost", // value axis label
+                "Total Acquire Cost of cars by Month", 
+                "Month", 
+                "Total Acquire Cost", 
                 dataset
         );
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
         plot.setDomainAxis(new CategoryAxis("Month"));
-        plot.setRangeAxis(new NumberAxis("Total Accquire Cost"));
+        plot.setRangeAxis(new NumberAxis("Total Acquire Cost"));
 
-        // Set custom color for the bars
+      
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
         Color color = new Color(79, 129, 189);
-        renderer.setSeriesPaint(0, color); // Change the color to your desired color
+        renderer.setSeriesPaint(0, color);
 
-        // Set custom background color for the plot
+        
         plot.setBackgroundPaint(new Color(240, 240, 240));
         ChartPanel chartPanel = new ChartPanel(chart);
 
-        // Create a new JFrame to display the chart
+       
         JFrame frame = new JFrame("Bar Chart Application1");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.getContentPane().add(chartPanel);
@@ -673,105 +637,97 @@ public class SalesInsight extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void backgroundComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_backgroundComponentRemoved
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_backgroundComponentRemoved
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
         frame.dispose();
 
-        // Create a new JFrame
         JFrame newFrame = new JFrame("Chart Application");
 
-        // Instantiate your Practice5 class
         SalesInsight sales = new SalesInsight(employeeID);
 
-        // Add the Practice5 panel to the new JFrame
         newFrame.getContentPane().add(sales);
 
-        // Set JFrame properties
         newFrame.setSize(900, 600);
         newFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        newFrame.setLocationRelativeTo(null); // Center the frame on the screen
+        newFrame.setLocationRelativeTo(null); 
 
-        // Make the new JFrame visible
         newFrame.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-      
+
         run();
+    }
+
+    public void run() {
+        String salesFilePath = "src\\sales.csv";
+        String vehicleFilePath = "src\\vehicle.csv";
+
+        try {
+            List<String> salesDataset = loadDataset(salesFilePath);
+            List<String> vehicleDataset = loadDataset(vehicleFilePath);
+
+            List<String> mergedDataset = mergeDatasets(salesDataset, vehicleDataset, "carPlate");
+            writeMergedContentToFile("src\\newdataset.csv", mergedDataset);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
 
-        public void run() {
-            String salesFilePath = "src\\sales.csv";
-            String vehicleFilePath = "src\\vehicle.csv";
+    public List<String> loadDataset(String filePath) throws IOException {
+        List<String> dataset = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                dataset.add(line);
+            }
+        }
+        return dataset;
+    }
 
-            try {
-                // Load datasets
-                List<String> salesDataset = loadDataset(salesFilePath);
-                List<String> vehicleDataset = loadDataset(vehicleFilePath);
+    public List<String> mergeDatasets(List<String> dataset1, List<String> dataset2, String keyColumn) {
+        List<String> mergedDataset = new ArrayList<>();
+        Map<String, String> mapDataset2 = createMapFromDataset(dataset2, keyColumn);
 
-                // Merge datasets based on the "carPlate" column
-                List<String> mergedDataset = mergeDatasets(salesDataset, vehicleDataset, "carPlate");
-                writeMergedContentToFile("src\\newdataset.csv", mergedDataset);
+        for (String row : dataset1) {
+            String[] columns = row.split(",");
+            String key = columns[2].trim();
 
-            } catch (IOException e) {
-                e.printStackTrace();
+            if (mapDataset2.containsKey(key)) {
+                mergedDataset.add(row + "," + mapDataset2.get(key));
             }
         }
 
-        public List<String> loadDataset(String filePath) throws IOException {
-            List<String> dataset = new ArrayList<>();
-            try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    dataset.add(line);
-                }
-            }
-            return dataset;
+        return mergedDataset;
+    }
+
+    public Map<String, String> createMapFromDataset(List<String> dataset, String keyColumn) {
+        Map<String, String> mapDataset = new HashMap<>();
+
+        for (String row : dataset) {
+            String[] columns = row.split(",");
+            mapDataset.put(columns[0].trim(), row);
         }
 
-        public List<String> mergeDatasets(List<String> dataset1, List<String> dataset2, String keyColumn) {
-            List<String> mergedDataset = new ArrayList<>();
-            Map<String, String> mapDataset2 = createMapFromDataset(dataset2, keyColumn);
+        return mapDataset;
+    }
 
-            for (String row : dataset1) {
-                String[] columns = row.split(",");
-                String key = columns[2].trim();
-
-                if (mapDataset2.containsKey(key)) {
-                    mergedDataset.add(row + "," + mapDataset2.get(key));
-                }
+    public void writeMergedContentToFile(String filePath, List<String> content) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
+            for (String line : content) {
+                writer.write(line);
+                writer.newLine();
             }
-
-            return mergedDataset;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        public Map<String, String> createMapFromDataset(List<String> dataset, String keyColumn) {
-            Map<String, String> mapDataset = new HashMap<>();
-
-            for (String row : dataset) {
-                String[] columns = row.split(",");
-                mapDataset.put(columns[0].trim(), row);
-            }
-
-            return mapDataset;
-        }
-
-        public void writeMergedContentToFile(String filePath, List<String> content) {
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
-                for (String line : content) {
-                    writer.write(line);
-                    writer.newLine();
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
         InfoViewManagement infoViewManagement = new InfoViewManagement(employeeID);
         infoViewManagement.InfoViewManagement();
         JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(this);
