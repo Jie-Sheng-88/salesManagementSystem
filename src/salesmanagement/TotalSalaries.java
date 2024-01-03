@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package salesmanagement;
 
 import java.io.BufferedReader;
@@ -10,18 +6,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author LIM XIN MEI
- */
 public class TotalSalaries {
-private EmployeeInfoManager employeeInfoManager;
+
+    private EmployeeInfoManager employeeInfoManager;
     private EmployeeSalaryManager employeeSalaryManager;
 
     public TotalSalaries(EmployeeInfoManager employeeInfoManager) {
         this.employeeInfoManager = employeeInfoManager;
         this.employeeSalaryManager = new EmployeeSalaryManager(employeeInfoManager);
     }
+
     public double calculateTotal() {
         List<String> ids = getTotal();
 

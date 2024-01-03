@@ -13,7 +13,7 @@ public class SearchVehicle {
     private static Scanner x;
 
     public static void SearchVehicle() {
-        String filepath = "src\\vehicle.csv";//change your file path
+        String filepath = "src\\vehicle.csv";
 
         String searchTerm = JOptionPane.showInputDialog(null,
                 "Enter the search term:"

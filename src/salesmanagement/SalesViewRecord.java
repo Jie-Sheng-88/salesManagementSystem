@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package salesmanagement;
 
 import java.awt.BorderLayout;
@@ -106,7 +102,6 @@ public class SalesViewRecord {
                 JScrollPane scrollPane = new JScrollPane(resultTable);
                 scrollPane.setPreferredSize(new Dimension(1100, 400));
 
-                
                 return resultTable;
             } else {
                 JOptionPane.showMessageDialog(null, "No sales information found for Employee ID " + employeeId);
@@ -205,7 +200,6 @@ public class SalesViewRecord {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
 
-        // Case-insensitive search
         rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
     }
 }

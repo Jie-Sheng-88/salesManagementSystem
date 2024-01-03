@@ -11,11 +11,11 @@ public class viewinfo {
     private static String salespath = "src\\sales.csv";
     private static String employeepath = "src\\employee.csv";
     private static String custpath = "src\\cust.csv";
-    //status是用户等级，1是管理员 2是普通员工
+    
     private String status;
     private String employeeId;
 
-    // 设定员工id和status的构造器
+    
     public viewinfo(String employeeId) throws IOException {
         this.employeeId = employeeId;
         this.status = getStatus(employeeId);
@@ -30,7 +30,6 @@ public class viewinfo {
         br.close();
     }
 
-    // 判断员工等级的函数
     public static String getStatus(String employeeId) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(employeepath));
         String line;
@@ -61,7 +60,7 @@ public class viewinfo {
             }
             br.close();
         } else if (this.status != null) {
-            System.out.println("无权访问");
+            System.out.println("cannot access");
         }
     }
 
@@ -99,7 +98,7 @@ public class viewinfo {
             br.close();
 
         } else if (this.status != null) {
-            System.out.println("无权访问");
+            System.out.println("cannot access");
         }
 
     }
@@ -113,7 +112,7 @@ public class viewinfo {
             }
             br.close();
         } else {
-            System.out.println("无权访问");
+            System.out.println("cannot access");
         }
     }
 

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package salesmanagement;
 
 import java.io.BufferedReader;
@@ -12,9 +8,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class FilterandSum {
-     public List<Integer> filterSalesPrice(String filePath, LocalDateTime startDate, LocalDateTime endDate, String dateTimePattern) throws Exception {
+
+    public List<Integer> filterSalesPrice(String filePath, LocalDateTime startDate, LocalDateTime endDate, String dateTimePattern) throws Exception {
         List<Integer> salesPrices = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -43,16 +39,16 @@ public class FilterandSum {
         return salesPrices;
 
     }
-     
-     public int calculateSum(List<Integer> prices) {
+
+    public int calculateSum(List<Integer> prices) {
         int sum = 0;
         for (int price : prices) {
             sum += price;
         }
         return sum;
     }
-     
-     public List<Integer> filterAccquirePrice(String filePath, LocalDateTime startDate, LocalDateTime endDate, String dateTimePattern) throws Exception {
+
+    public List<Integer> filterAccquirePrice(String filePath, LocalDateTime startDate, LocalDateTime endDate, String dateTimePattern) throws Exception {
         List<Integer> accquirePrices = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -67,7 +63,7 @@ public class FilterandSum {
                 LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, DateTimeFormatter.ofPattern(dateTimePattern));
 
                 if (dateTime.isAfter(startDate) && dateTime.isBefore(endDate)) {
-                    String accquirePriceStr = row[7].trim(); 
+                    String accquirePriceStr = row[7].trim();
                     int accquirePrice = Integer.parseInt(accquirePriceStr);
                     accquirePrices.add(accquirePrice);
                 }
@@ -80,14 +76,13 @@ public class FilterandSum {
 
         return accquirePrices;
     }
-     
-     public int calculateSum1(List<Integer> prices) {
+
+    public int calculateSum1(List<Integer> prices) {
         int sum = 0;
         for (int price : prices) {
             sum += price;
         }
         return sum;
     }
-     
-     
+
 }

@@ -14,7 +14,7 @@ public class SearchSales {
 
     public static void SearchSales() {
 
-        String filepath = "src\\sales.csv";//change your file path
+        String filepath = "src\\sales.csv";
 
         String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Sales Id"

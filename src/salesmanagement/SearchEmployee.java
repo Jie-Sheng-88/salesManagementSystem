@@ -9,13 +9,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class SearchEmployee {
-    
-private static Scanner x;
+
+    private static Scanner x;
 
     public static void SearchEmployee() {
-        
+
         String filepath = "src\\employee.csv";
-        
+
         String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Employee Id"
                 + "\n-Employee Name"
@@ -61,7 +61,7 @@ private static Scanner x;
             if (found) {
                 JTable resultTable = new JTable(tableModel);
                 JScrollPane scrollPane = new JScrollPane(resultTable);
-                scrollPane.setPreferredSize(new Dimension(500, 400));
+                scrollPane.setPreferredSize(new Dimension(600, 400));
 
                 JOptionPane.showMessageDialog(null, scrollPane, "Search Results", JOptionPane.INFORMATION_MESSAGE);
             } else {

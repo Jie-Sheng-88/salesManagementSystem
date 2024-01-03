@@ -9,13 +9,12 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class SearchCustomer {
-    
-private static Scanner x;
+
+    private static Scanner x;
 
     public static void SearchCustomer() {
-        // TODO code application logic here
 
-        String filepath = "src\\cust.csv";//change your file path
+        String filepath = "src\\cust.csv";
 
         String searchTerm = JOptionPane.showInputDialog("Enter the search term:"
                 + "\n-Customer Id"
@@ -39,27 +38,27 @@ private static Scanner x;
             tableModel.addColumn("Customer Name");
             tableModel.addColumn("Phone No.");
             tableModel.addColumn("Postcode");
-            
+
             while (x.hasNextLine()) {
                 String line = x.nextLine();
                 String[] data = line.split(",");
-                
-            if (data.length >= 4) {
-                String custId = data[0].trim();
-                String custName = data[1].trim();
-                String phoneNum = data[2].trim();
-                String postcode = data[3].trim();
 
-                if (custId.equalsIgnoreCase(searchTerm)
-                        || custName.equalsIgnoreCase(searchTerm)
-                        || phoneNum.equalsIgnoreCase(searchTerm)
-                        || postcode.equalsIgnoreCase(searchTerm)) {
+                if (data.length >= 4) {
+                    String custId = data[0].trim();
+                    String custName = data[1].trim();
+                    String phoneNum = data[2].trim();
+                    String postcode = data[3].trim();
 
-                    tableModel.addRow(new Object[]{custId, custName, phoneNum, postcode});
-                    found = true;
+                    if (custId.equalsIgnoreCase(searchTerm)
+                            || custName.equalsIgnoreCase(searchTerm)
+                            || phoneNum.equalsIgnoreCase(searchTerm)
+                            || postcode.equalsIgnoreCase(searchTerm)) {
 
+                        tableModel.addRow(new Object[]{custId, custName, phoneNum, postcode});
+                        found = true;
+
+                    }
                 }
-            }
             }
             if (found) {
                 JTable resultTable = new JTable(tableModel);
