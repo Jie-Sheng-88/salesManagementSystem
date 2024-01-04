@@ -208,7 +208,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
                     + "Customer Name: You must at least 1 capital letter and small letter.\n"
                     + "Phone Number: You must enter 10/11 digit numbers.\n"
-                    + "Postcode: You must enter 5 digits.");
+                    + "Postcode: You must enter 5 digit numbers.");
         } else {
             try {
                 BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
@@ -220,7 +220,7 @@ public class DataEnteringCustomer extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(DataEnteringSales.class.getName()).log(Level.SEVERE, null, ex);
             }
-            String id = "C" + String.format("%04d", counter++);
+            String id = "C" + String.format("%04d", ++counter);
 
             String data[] = {id, txtCustName.getText(), txtPhoneNum.getText(), txtPostcode.getText()};
             DefaultTableModel tblModel = (DefaultTableModel) jTable1.getModel();

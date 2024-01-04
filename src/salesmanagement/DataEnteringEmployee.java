@@ -31,7 +31,6 @@ import static salesmanagement.ReadFile.data;
 public class DataEnteringEmployee extends javax.swing.JFrame {
 
     private String employeeID;
-    private String newEmpID;
     private String empStatus;
 
     public DataEnteringEmployee(String employeeID) {
@@ -215,7 +214,7 @@ public class DataEnteringEmployee extends javax.swing.JFrame {
                     + "Employee ID: You must have enter \"E\" and 4 digit numbers.\n"
                     + "Employee Name: You must enter at least 1 capital letter and 1 small letter.\n"
                     + "Employee Status: You must choose at least 1 from the dropdown menu.\n"
-                    + "Employee Password: You must enter at least 1 letter and 1 small letter (at least 6 characters).\n");
+                    + "Employee Password: You must enter at least 1 letter and 1 small letter (must 6 characters).\n");
         } else {
 
             String data[] = {txtEmpID.getText(), txtEmpName.getText(), empStatus, txtPassword.getText()};

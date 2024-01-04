@@ -289,7 +289,7 @@ public class DataEnteringVehicle extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
                     + "Car Plate: You must have 3 capital letters and at least 1 digit numbers.\n"
                     + "Car Model: You must have at least 1 capital letters and 1 small letter.\n"
-                    + "Car Acquired Price: You must enter at least 1 digit numbers.\n"
+                    + "Car Acquired Price: You must enter in between 1 to 4 digit numbers.\n"
                     + "Car Status: You must choose 1 from the dropdown menu.\n");
         } else {
             if (txtSoldPrice.getText().equals("") || vehicleStatus.equals("1")) {
@@ -421,7 +421,7 @@ public class DataEnteringVehicle extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private boolean carPlateCheckValidate(String txtInput) {
-        return txtInput.matches("[A-Z]{3}\\d+");
+        return txtInput.matches("[A-Z]{3}\\d{1,4}");
     }
 
     private boolean carAcqPriceCheckValidate(String txtInput) {

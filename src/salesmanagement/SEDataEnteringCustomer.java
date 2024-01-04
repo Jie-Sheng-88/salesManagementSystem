@@ -175,7 +175,7 @@ public class SEDataEnteringCustomer extends javax.swing.JFrame {
                 String input;
                 int count = 0;
                 while ((input = bufferedReader.readLine()) != null) {
-                    this.counter = count++;
+                    this.counter = ++count;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(DataEnteringSales.class.getName()).log(Level.SEVERE, null, ex);

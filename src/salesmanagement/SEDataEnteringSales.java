@@ -165,7 +165,7 @@ public class SEDataEnteringSales extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please Enter All Data!");
         } else if (!custIDCheckValidate(txtCustID.getText()) || !carPlateCheckValidate(txtCarPlate.getText())) {
             JOptionPane.showMessageDialog(null, "*Please follow the correct format:\n"
-                    + "Car Plate: You must have 3 capital letters and at least 1 digit numbers.\n"
+                    + "Car Plate: You must have 3 capital letters and in between 1 to 4 digit numbers.\n"
                     + "Customer ID: You must enter capital letter \"C\" and 4 digit numbers. Example: C0000, C0001, etc.\n");
         } else {
             try {
@@ -232,7 +232,7 @@ public class SEDataEnteringSales extends javax.swing.JFrame {
     }
 
     private boolean carPlateCheckValidate(String txtInput) {
-        return txtInput.matches("[A-Z]{3}\\d+");
+        return txtInput.matches("[A-Z]{3}\\d{1,4}");
     }
 
     private boolean custIDCheckValidate(String txtInput) {
