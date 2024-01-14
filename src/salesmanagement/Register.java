@@ -237,7 +237,8 @@ public class Register extends javax.swing.JFrame {
     // Check if the secret key is correct
     if (!secretKey.equals(registeration.secretKey)) {
         // Display an error message or handle the incorrect key situation
-        JOptionPane.showMessageDialog(this, "Secret key is incorrect. Registration process aborted.", "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Secret key is incorrect. Registration process aborted and program will be terminated !", "Error", JOptionPane.ERROR_MESSAGE);
+        System.exit(0);
         return;
     }
 
